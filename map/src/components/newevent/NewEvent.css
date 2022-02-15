@@ -1,0 +1,4 @@
+.eventForm {
+    display: flex;
+    flex-direction: column;
+}
