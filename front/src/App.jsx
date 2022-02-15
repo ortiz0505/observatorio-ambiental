@@ -10,6 +10,7 @@ import Funcionario from './pages/funcionario';
 import Gestionreporteros from './pages/gestiondereporteros';
 import Reportesf from './pages/reportesf';
 import Solicitudesreportes from './pages/solicitudesreportes';
+import Ceventos from './pages/creareventos';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './styles/globals.css';
@@ -27,12 +28,14 @@ function App() {
         <Route path='/pvreportero' element={<PVReportero />} />
         <Route path='/reportero' element={<Reportero />} />
         <Route path='/reportero/rreportero' element={<Reportesr />} />
+        <Route path='/evento/crear' element={<Ceventos />} />
 
         <Route path='/funcionario' element={<Funcionario />} />
         <Route path='/funcionario/gestiondereporteros' element={<Gestionreporteros />} />
         <Route path='/funcionario/rfuncionario' element={<Reportesf />} />
         <Route path='/funcionario/solicitudesr' element={<Solicitudesreportes />} />
         <Route path='/funcionario/crear' element={<CrearFuncionario />} />
+        
       </Routes>
     </BrowserRouter>
   );

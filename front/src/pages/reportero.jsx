@@ -13,7 +13,7 @@ const reportero = () => {
                 </button>
             </div>
             </Link>
-            <Link to='/reportero/mapareportes'>
+            <Link to='/evento/crear'>
             <div>
                 <button className="w-96 my-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Reportar nueva zona de influencia
