@@ -27,20 +27,20 @@ const mapageneral = () => {
   return (
     <div className=''>
     <MapContainer center={[6.24, -75.58]} zoom={15} scrollWheelZoom={true} doubleClickZoom={false}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-           {
-            events.map((event)=>(
-              <Marker key={event._id} position={[event.latitud, event.longitud]}>
-                <Popup>
-                  {event.descripcion}
-                </Popup>
-              </Marker>
-            ))
-          }
-        </MapContainer>
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+        {
+        events.map((event)=>(
+          <Marker key={event._id} position={[event.latitud, event.longitud]}>
+            <Popup>
+              {event.descripcion}
+            </Popup>
+          </Marker>
+        ))
+      }
+    </MapContainer>
     </div>
   );
 };

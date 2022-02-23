@@ -6,3 +6,15 @@
     @apply w-full h-screen flex
 }
 
+.span-form-event{
+    @apply grid grid-cols-2 w-11/12 gap-4
+}
+
+.enviar-event{
+    @apply px-4 py-2 font-semibold text-sm bg-black text-white rounded-full shadow-sm
+}
+
+.input-event{
+    @apply border-2 rounded-lg border-black w-full
+}
+
