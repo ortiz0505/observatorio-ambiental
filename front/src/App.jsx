@@ -13,7 +13,7 @@ import Solicitudesreportes from './pages/solicitudesreportes';
 import Ceventos from './pages/creareventos';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './styles/globals.css';
+//import './styles/globals.css';
 import CrearFuncionario from './pages/crearfuncionario';
 
 function App() {

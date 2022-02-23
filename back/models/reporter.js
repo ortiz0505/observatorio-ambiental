@@ -7,8 +7,8 @@ const reporterSchema = new Schema({
     correo: String,
     descripcion: String,
     zona_influencia: String,
-    estado_usuario: Boolean,
-    motivo_suspension: String
+    estado_usuario: {type: Boolean, default: false},
+    motivo_suspension: {type: String, default: ""}
 })
 
 //crear el modelo

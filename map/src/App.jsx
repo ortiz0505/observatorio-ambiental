@@ -16,12 +16,13 @@ function App() {
     const eventsData = async () =>{
       const options = {
         method: 'get',
-        url: 'http://localhost:4000',
+        url: 'http://localhost:4000/',
         headers: {'Content-Type': 'application/json'},
       }
 
       const respuesta = await axios.request(options);
       setEvents(respuesta.data);
+      console.log(respuesta.data);
     };
     eventsData();
   },[])
@@ -44,7 +45,7 @@ function App() {
           />
           {
             events.map((event)=>(
-              <Marker key={event._id} position={[event.lati, event.longi]}>
+              <Marker key={event._id} position={[event.latitud, event.longitud]}>
                 <Popup>
                   {event.event}
                 </Popup>

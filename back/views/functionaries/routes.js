@@ -1,5 +1,6 @@
 import express from "express";
 import Funtionary from '../../models/functionary.js'
+
 const funtionaryRoute = express.Router();
 
 funtionaryRoute.route("/funcionario/crear").post(async (req, res)=>{

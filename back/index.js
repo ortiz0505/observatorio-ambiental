@@ -3,6 +3,7 @@ import { eventRoute } from "./views/events/routes.js";
 import { funtionaryRoute } from "./views/functionaries/routes.js";
 import cors from "cors";
 import mongoose from 'mongoose';
+import { reporterRoute } from "./views/reporter/routes.js";
 
 const password = 'ihep9XwGpd5WqzBd';
 const user = 'observatory-admin';
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use(cors());
 app.use(eventRoute);
 app.use(funtionaryRoute);
+app.use(reporterRoute);
 
 app.listen(port, ()=>{
     console.log(`Example app lisening at http://localhost:${port}`);

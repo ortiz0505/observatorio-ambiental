@@ -14,8 +14,8 @@ const eventSchema = new Schema({
     ID_reportero: String,
     ID_funcionario: String,
     prioridad: String,
-    estado_aprobacion: Boolean,
-    estado_evento: Boolean,
+    estado_aprobacion: {type: Boolean, default: false},
+    estado_evento: {type: Boolean, default: true},
     clasificacion: String,
     enlace: String
 })

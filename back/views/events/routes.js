@@ -2,34 +2,72 @@ import express from "express";
 const eventRoute = express.Router();
 import Event from '../../models/event.js'
 
-eventRoute.route("/evento/leer").get(async (req, res)=>{
+eventRoute.route("/evento").get(async (req, res) => {
     try {
         const arrayEventsDB = await Event.find();
-        res.status(200).send(arrayEventsDB);
+        const arrayFinal = [];
+        arrayEventsDB.map((event)=>{
+            if(event.estado_aprobacion === true){
+                arrayFinal.push(event);
+            }
+        })
+        res.status(200).send(arrayFinal);
     } catch (error) {
-        console.log(error);
+        res.status(400).send(error);
     }
 });
 
-eventRoute.route("/evento/crear").post(async (req, res)=>{
+eventRoute.route("/solicitudesr").get(async (req, res) => {
+    try {
+        const arrayEvents = await Event.find();
+        const arrayFinal = [];
+        arrayEvents.map((event) => {
+            if (event.estado_aprobacion === false && event.estado_evento === true) {
+                arrayFinal.push(event);
+            }
+        });
+        res.status(200).send(arrayFinal);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+})
+
+
+eventRoute.route("/evento").post(async (req, res) => {
     try {
         const {
-            latitud, longitud, imagen, fecha_fin, descripcion, zona_influencia,
-            ID_reportero, ID_funcionario, prioridad, estado_aprobacion, estado_evento,
-            clasificacion, enlace
+            latitud,
+            longitud,
+            imagen,
+            fecha_fin,
+            descripcion,
+            zona_influencia,
+            ID_reportero,
+            ID_funcionario,
+            prioridad,
+            clasificacion,
+            enlace
         } = req.body;
-        const event = new Event(
-            {
-                latitud, longitud, imagen, fecha_fin, descripcion, zona_influencia,
-                ID_reportero, ID_funcionario, prioridad, estado_aprobacion, estado_evento,
-                clasificacion, enlace
-            }
-        );
+        const event = new Event({
+            latitud,
+            longitud,
+            imagen,
+            fecha_fin,
+            descripcion,
+            zona_influencia,
+            ID_reportero,
+            ID_funcionario,
+            prioridad,
+            clasificacion,
+            enlace
+        });
         await event.save();
         res.status(200).send(event);
     } catch (error) {
-        res.status.console.log(error);
+        res.status(400).send(error);
     }
 });
 
-export {eventRoute};
+export {
+    eventRoute
+};
