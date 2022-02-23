@@ -3,11 +3,11 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const tracingSchema = new Schema({
-    fecha: Date,
+    fecha: {type: Date, default: Date.now},
     ID_evento: String,
     tipo_seguimiento: String,
     descripcion: String,
-    imangen: String,
+    imagen: String,
     categoria: String,
     observaciones_recomendaciones: String,
     ID_funcionario: String,

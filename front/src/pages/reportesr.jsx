@@ -1,6 +1,22 @@
-import React from 'react';
+/* eslint-disable react-hooks/rules-of-hooks */
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import RowTableR from "../components/RowTableR";
 
 const reportesr = () => {
+    const [events, setEvents] = useState([]);
+    useEffect(() => {
+        const eventsData = async () => {
+        const options = { 
+            method: "get",
+            url: "http://localhost:4000/seguimiento",
+        };
+        const response = await axios.request(options);
+        setEvents(response.data);
+        };
+        eventsData();
+    }, []);
+
   return (
     <div class="text-gray-900 bg-gray-200">
         <div class="p-4 flex">
@@ -13,24 +29,17 @@ const reportesr = () => {
                 <tbody>
                     <tr class="border-b">
                         <th class="text-left p-3 px-5">Descripcion</th>
-                        <th class="text-left p-3 px-5">seguimiento</th>
+                        <th class="text-left p-3 px-5">tipo de seguimiento</th>
+                        <th class="text-left p-3 px-5">observaciones/recomendaciones</th>
                     </tr>
-                    <tr class="border-b hover:bg-orange-100 bg-gray-100">
-                        <td class="p-3 px-5"><input type="text" value="user.name" class="bg-transparent" /></td>
-                        <td class="p-3 px-5"><input type="text" value="user.name" class="bg-transparent" /></td>
-                    </tr>
-                    <tr class="border-b hover:bg-orange-100 bg-gray-100">
-                        <td class="p-3 px-5"><input type="text" value="user.name" class="bg-transparent" /></td>
-                        <td class="p-3 px-5"><input type="text" value="user.name" class="bg-transparent" /></td>
-                    </tr>
-                    <tr class="border-b hover:bg-orange-100 bg-gray-100">
-                        <td class="p-3 px-5"><input type="text" value="user.name" class="bg-transparent" /></td>
-                        <td class="p-3 px-5"><input type="text" value="user.name" class="bg-transparent" /></td>
-                    </tr>
-                    <tr class="border-b hover:bg-orange-100 bg-gray-100">
-                        <td class="p-3 px-5"><input type="text" value="user.name" class="bg-transparent" /></td>
-                        <td class="p-3 px-5"><input type="text" value="user.name" class="bg-transparent" /></td>
-                    </tr>
+                    {events.map((tracing) => {
+                    return (<RowTableR 
+                        key={tracing._id}
+                        descripcion={tracing.descripcion}
+                        tipo_seguimiento={tracing.tipo_seguimiento}
+                        observaciones_recomendaciones={tracing.observaciones_recomendaciones}
+                        />);
+                    })}
                 </tbody>
             </table>
         </div>

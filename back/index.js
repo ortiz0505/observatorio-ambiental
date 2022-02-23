@@ -1,9 +1,11 @@
 import express from "express";
-import { eventRoute } from "./views/events/routes.js";
-import { funtionaryRoute } from "./views/functionaries/routes.js";
 import cors from "cors";
 import mongoose from 'mongoose';
+
 import { reporterRoute } from "./views/reporter/routes.js";
+import { eventRoute } from "./views/events/routes.js";
+import { funtionaryRoute } from "./views/functionaries/routes.js";
+import { tracingRoute } from "./views/tracing/routes.js";
 
 const password = 'ihep9XwGpd5WqzBd';
 const user = 'observatory-admin';
@@ -21,6 +23,7 @@ app.use(cors());
 app.use(eventRoute);
 app.use(funtionaryRoute);
 app.use(reporterRoute);
+app.use(tracingRoute);
 
 app.listen(port, ()=>{
     console.log(`Example app lisening at http://localhost:${port}`);

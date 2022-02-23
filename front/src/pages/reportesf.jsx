@@ -7,7 +7,7 @@ const reportesf = () => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
     const eventsData = async () => {
-      const options = {
+      const options = { 
         method: "get",
         url: "http://localhost:4000/evento",
       };
