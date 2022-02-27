@@ -1,75 +1,42 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import GoogleLogin from "react-google-login";
+import { useAuth0 } from "@auth0/auth0-react";
+import { LoginButton } from "../components/Login";
+import { LogoutButton } from "../components/Logout";
+import { Profile } from "../components/profile";
+
+import {Link} from 'react-router-dom';
 
 const login = () => {
-  const responseGoogle = (res) => {
-    console.log(res);
-    console.log(res.profileObj);
-  };
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { isAuthenticated } = useAuth0();
+
   return (
-    <div className="grid place-items-center my-20">
-      <div className="w-full max-w-xs">
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="username"
-            >
-              Username
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="username"
-              type="text"
-              placeholder="Username"
-            />
-          </div>
-          <div className="mb-6">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="password"
-            >
-              Password
-            </label>
-            <input
-              className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-              id="password"
-              type="password"
-              placeholder="******************"
-            />
-            <p className="text-red-500 text-xs italic">
-              Please choose a password.
-            </p>
-          </div>
-          <div className="flex items-center justify-between">
-            <Link to="../funcionario">
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="button"
-              >
-                Sign In
-              </button>
-            </Link>
-            <p className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
-              Forgot Password?
-            </p>
-          </div>
-          <Link to="../reportero">
-            <div className="my-5">
-              <GoogleLogin
-                clientId="1093217996476-iqghu2seimr9cn6dn3bqj15id6vqmg66.apps.googleusercontent.com"
-                buttonText="Login"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-                cookiePolicy={"single_host_origin"}
-              />
+    <div className="flex h-screen justify-center items-center">
+          {isAuthenticated ? (
+            <div className="flex flex-row items-center">
+              <div>
+                <Profile />
+                <LogoutButton />
+              </div>
+              <div className="flex flex-col m-5">
+                <Link to='/funcionario' className='enviar-event m-2 w-full text-center'>Funcionario</Link>
+                <Link to='/reportero' className='enviar-event m-2 w-full text-center'>Reportero</Link>
+              </div>
             </div>
-          </Link>
-        </form>
-      </div>
+
+          ) : (
+            <div className="text-center">
+              <div className="m-5">
+                <span className="block">Bienvenido a "nombre app"</span>
+                ¿quieres ingresar a nuestra plataforma?
+              </div>
+              <LoginButton />
+            </div>
+          )}
     </div>
   );
 };
 
 export default login;
+

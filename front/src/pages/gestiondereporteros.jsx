@@ -1,19 +1,31 @@
 import React from 'react';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const gestiondereporteros = () => {
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const { isAuthenticated } = useAuth0();
+
   return (
-      <div className='grid place-items-center my-20'>
-            <div>
-                <button className="w-96 my-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Reportar reportero
-                </button>
+      <div>
+          {isAuthenticated ? (
+              <div className='grid place-items-center my-20'>
+              <div>
+                  <button className="w-96 my-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                      Reportar reportero
+                  </button>
+              </div>
+              <div>
+                  <button className="w-96 my-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                      Eliminar sanción
+                  </button>
+              </div>
             </div>
-            <div>
-                <button className="w-96 my-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Eliminar sanción
-                </button>
-            </div>
+        ) : (
+            <div>Tienes que autenticarte para ingresar aqui</div>
+        )}
       </div>
+      
   );
 };
 
