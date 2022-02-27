@@ -68,6 +68,32 @@ eventRoute.route("/evento").post(async (req, res) => {
     }
 });
 
+
+eventRoute.route('/evento').put(async (req, res) =>{
+    const eventData = req.body;
+    const id = eventData._id
+    try {
+        await Event.findByIdAndUpdate(id, {
+            estado_aprobacion: true
+        });
+        res.status(200).send({status: 'ok'});
+    } catch (error) {
+        res.status(400).send(error);
+    }
+});
+
+eventRoute.route('/evento').delete(async (req, res) =>{
+    const eventData = req.body;
+    const id = eventData._id
+    try {
+        await Event.findByIdAndRemove(id);
+        res.status(200).send({status: 'ok'});
+    } catch (error) {
+        res.status(400).send(error);
+    }
+});
+
+
 export {
     eventRoute
 };

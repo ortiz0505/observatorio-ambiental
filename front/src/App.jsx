@@ -36,7 +36,7 @@ function App() {
         <Route path='/funcionario/rfuncionario' element={<Reportesf />} />
         <Route path='/funcionario/solicitudesr' element={<Solicitudesreportes />} />
         <Route path='/funcionario/crear' element={<CrearFuncionario />} />
-        <Route path='/funcionario/seguimiento' element={<Seguimientos />} />
+        <Route path='/funcionario/seguimiento/:id' element={<Seguimientos />} />
         
       </Routes>
     </BrowserRouter>

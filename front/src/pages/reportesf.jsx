@@ -17,12 +17,12 @@ const reportesf = () => {
     eventsData();
   }, []);
   return (
-    <div class="text-gray-900 bg-gray-200">
-      <div class="p-4 flex">
-        <h1 class="text-3xl">Reportes</h1>
+    <div className="text-gray-900 bg-gray-200">
+      <div className="p-4 flex">
+        <h1 className="text-3xl">Reportes</h1>
       </div>
-      <div class="px-3 py-4 flex justify-center overflow-x-auto">
-        <table class="w-full text-base bg-white shadow-md rounded mb-4">
+      <div className="px-3 py-4 flex justify-center overflow-x-auto">
+        <table className="w-full text-base bg-white shadow-md rounded mb-4">
           <tbody>
             <tr className="border-b">
               <th className="text-left p-3 px-5">Descripción</th>
@@ -37,6 +37,7 @@ const reportesf = () => {
             {events.map((event) => {
               return (<RowEvents 
                 key={event._id}
+                id={event._id}
                 description={event.descripcion}
                 status={event.estado_evento ? 'abierto' : 'cerrado'}
                 initial_date={event.fecha_inicio}

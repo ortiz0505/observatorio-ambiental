@@ -9,13 +9,13 @@ const RowTracing = (props) => {
   const { enlace } = props;
   
   return (
-    <tr class="border-b hover:bg-orange-100 bg-gray-100">
-      <td class="p-3 px-5">{descripcion}</td>
-      <td class="p-3 px-5">{fecha}</td>
-      <td class="p-3 px-5">{tipo_seguimiento}</td>
-      <td class="p-3 px-5">{imagen}</td>
-      <td class="p-3 px-5">{observaciones_recomendaciones}</td>
-      <td class="p-3 px-5">{enlace}</td>
+    <tr className="border-b hover:bg-orange-100 bg-gray-100">
+      <td className="p-3 px-5">{descripcion}</td>
+      <td className="p-3 px-5">{fecha}</td>
+      <td className="p-3 px-5">{tipo_seguimiento}</td>
+      <td className="p-3 px-5">{imagen}</td>
+      <td className="p-3 px-5">{observaciones_recomendaciones}</td>
+      <td className="p-3 px-5">{enlace}</td>
     </tr>
   );
 };

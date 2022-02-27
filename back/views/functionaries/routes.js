@@ -10,7 +10,7 @@ funtionaryRoute.route("/funcionario/crear").post(async (req, res)=>{
         await funtionary.save();
         res.status(200).send('ok');
     } catch (error) {
-        res.status(400).console.log(error);
+        res.status(400).send(error);
     }
 });
 

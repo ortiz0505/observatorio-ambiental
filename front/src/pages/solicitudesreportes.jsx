@@ -42,6 +42,7 @@ const solicitudesreportes = () => {
                     influence_zone={event.zona_influencia}
                     date={event.fecha_inicio}
                     priority={event.prioridad}
+                    _id={event._id}
                     />
                 )
               })

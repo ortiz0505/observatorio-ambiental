@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 import GoogleLogin from "react-google-login";
 
 const login = () => {
-
-    const responseGoogle = (res) =>{
-        console.log(res);
-        console.log(res.profileObj);
-    }
+  const responseGoogle = (res) => {
+    console.log(res);
+    console.log(res.profileObj);
+  };
   return (
     <div className="grid place-items-center my-20">
       <div className="w-full max-w-xs">
@@ -52,12 +51,9 @@ const login = () => {
                 Sign In
               </button>
             </Link>
-            <a
-              className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-              href="#"
-            >
+            <p className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
               Forgot Password?
-            </a>
+            </p>
           </div>
           <Link to="../reportero">
             <div className="my-5">

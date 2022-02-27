@@ -8,7 +8,7 @@ try {
     const reporters = await Reporter.find();
     res.status(200).send(reporters)
 } catch (error) {
-    res.status(400).console.log(error)
+    res.status(400).send(error)
 }
 });
 
