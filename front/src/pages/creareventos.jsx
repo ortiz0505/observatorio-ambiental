@@ -6,6 +6,7 @@ import { MapContainer, Marker, TileLayer, Popup} from 'react-leaflet';
 import AddMarket from "../components/AddMarket";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import Notauth from '../components/404';
 
 const creareventos = () => {
 
@@ -51,9 +52,11 @@ const creareventos = () => {
             onChange={updateFormData}
             className="grid grid-cols-1 gap-4"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fillRule="currentColor">
-              <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
-            </svg>
+            <Link to='/reportero'>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fillRule="currentColor">
+                <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
+              </svg>
+            </Link>
             <label htmlFor="latitud" className='span-form-event hidden'>
               <span className="hidden">Latitud</span>
               <input name="latitud" type="text" className='input-event hidden' value={position.latitude} readOnly/>
@@ -94,7 +97,7 @@ const creareventos = () => {
               <span>Enlace</span>
               <input name="enlace" type="text" className='input-event'/>
             </label>
-            <Link to='/reportero'>
+            <Link className='flex justify-center items-center' to='/reportero'>
             <button type="submit" className='enviar-event' onClick={submitForm}>
               Enviar
             </button>
@@ -121,7 +124,7 @@ const creareventos = () => {
         </div>
       </div>
         ) : (
-          <div>Tienes que autenticarte para ingresar aqui</div>
+          <Notauth />
       )}
     </div>
     

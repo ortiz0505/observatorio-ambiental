@@ -10,11 +10,10 @@ export const Profile = () => {
 
   return (
     isAuthenticated && (
-      <div className="flex py-4 first:pt-0 last:pb-0 my-5">
-        <img className="h-10 w-10 rounded-full" src={user.picture} alt={user.name} />
-        <div className="ml-3 overflow-hidden">
-            <p className="text-sm font-medium text-slate-900">{user.name}</p>
-            <p className="text-sm text-slate-500 truncate">{user.email}</p>
+      <div className="flex first:pt-0 last:pb-0">
+        <div className="ml-3 overflow-hidden text-center">
+            <p className="text-xs text-white">{user.name}</p>
+            <p className="text-xs text-slate-500 truncate">{user.email}</p>
         </div>
       </div>
     )

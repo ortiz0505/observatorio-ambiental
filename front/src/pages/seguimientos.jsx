@@ -5,6 +5,7 @@ import useFormData from "../hooks/useFormData";
 import RowTracing from "../components/RowTracing";
 import { useParams } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import Navbar from '../components/Navbar';
 
 const seguimientos = () => {
 
@@ -38,9 +39,10 @@ const seguimientos = () => {
     }, [params.id]);
 
   return (
-    <div>
+    <div className="divppl">
+      <Navbar />
       {isAuthenticated ? (
-        <div className="text-gray-900 bg-gray-200">
+        <div className="text-gray-900 bg-gray-200 w-full">
         <form ref={form} onChange={updateFormData} className="p-4">
           {/*<div className="p-4 flex">
                   <h1 className="text-3xl">ID_ evento</h1>

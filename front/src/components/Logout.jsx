@@ -5,10 +5,8 @@ export const LogoutButton = () => {
   const { logout } = useAuth0();
 
   return (
-    <div className="flex justify-center items-center">
-      <button className='enviar-event' onClick={() => logout({ returnTo: window.location.href})}>
+    <div className='navoptions cursor-pointer' role="menuitem" tabindex="-1" id="menu-item-2" onClick={() => logout({ returnTo: window.location.href})}>
         Cerrar sesión
-      </button>
     </div>
   );
 };

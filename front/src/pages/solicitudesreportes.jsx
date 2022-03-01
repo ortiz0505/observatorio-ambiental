@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import RowTable from "../components/RowTable";
 import { useAuth0 } from "@auth0/auth0-react";
+import Navbar from '../components/Navbar';
 
 const solicitudesreportes = () => {
 
@@ -24,9 +25,10 @@ const solicitudesreportes = () => {
     }, []);
 
   return (
-    <div>
+    <div className="divppl">
+      <Navbar />
       {isAuthenticated ? (
-          <div className="text-gray-900 bg-gray-200">
+          <div className="text-gray-900 bg-gray-200 w-full">
           <div className="p-4 flex">
             <h1 className="text-3xl">Solicitudes</h1>
           </div>

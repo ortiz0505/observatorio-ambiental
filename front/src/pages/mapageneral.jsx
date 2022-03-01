@@ -25,7 +25,7 @@ const mapageneral = () => {
 
 
   return (
-    <div className=''>
+    <div>
     <MapContainer center={[6.24, -75.58]} zoom={15} scrollWheelZoom={true} doubleClickZoom={false}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

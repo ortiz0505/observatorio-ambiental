@@ -1,5 +1,4 @@
 import Index from './pages/index';
-import Login from './pages/login';
 import Mgeneral from './pages/mapageneral';
 
 import Reportero from './pages/reportero';
@@ -24,7 +23,6 @@ function App() {
         <Route path='' element={<Index />} />
         
         <Route path='/mapageneral' element={<Mgeneral />} />
-        <Route path='/login' element={<Login />} />
 
         <Route path='/pvreportero' element={<PVReportero />} />
         <Route path='/reportero' element={<Reportero />} />
