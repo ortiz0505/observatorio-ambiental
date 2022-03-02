@@ -1,4 +1,5 @@
 import express from "express";
+import mongoose from "mongoose";
 const eventRoute = express.Router();
 import Event from '../../models/event.js'
 
@@ -6,8 +7,8 @@ eventRoute.route("/evento").get(async (req, res) => {
     try {
         const arrayEventsDB = await Event.find();
         const arrayFinal = [];
-        arrayEventsDB.map((event)=>{
-            if(event.estado_aprobacion === true){
+        arrayEventsDB.map((event) => {
+            if (event.estado_aprobacion === true) {
                 arrayFinal.push(event);
             }
         })
@@ -16,6 +17,17 @@ eventRoute.route("/evento").get(async (req, res) => {
         res.status(400).send(error);
     }
 });
+
+
+eventRoute.route('/evento/:id').get(async (req, res) => {
+    try {
+        const id = mongoose.Types.ObjectId(req.params.id);
+        const event = await Event.findById(id);
+        res.status(200).send(event);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+})
 
 eventRoute.route("/solicitudesr").get(async (req, res) => {
     try {
@@ -69,29 +81,46 @@ eventRoute.route("/evento").post(async (req, res) => {
 });
 
 
-eventRoute.route('/evento').put(async (req, res) =>{
+eventRoute.route('/evento').put(async (req, res) => {
     const eventData = req.body;
     const id = eventData._id
     try {
         await Event.findByIdAndUpdate(id, {
             estado_aprobacion: true
         });
-        res.status(200).send({status: 'ok'});
+        res.status(200).send({
+            status: 'ok'
+        });
     } catch (error) {
         res.status(400).send(error);
     }
 });
 
-eventRoute.route('/evento').delete(async (req, res) =>{
+eventRoute.route('/evento').delete(async (req, res) => {
     const eventData = req.body;
     const id = eventData._id
     try {
         await Event.findByIdAndRemove(id);
-        res.status(200).send({status: 'ok'});
+        res.status(200).send({
+            status: 'ok'
+        });
     } catch (error) {
         res.status(400).send(error);
     }
 });
+
+eventRoute.route('/evento/:id').patch(async (req, res) => {
+    try {
+        const event = await Event.findById(mongoose.Types.ObjectId(req.params.id))
+        Object.assign(event, req.body);
+        event.save();
+        res.status(200).send({
+            data: event
+        })
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
 
 
 export {
