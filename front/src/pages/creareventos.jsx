@@ -46,7 +46,7 @@ const creareventos = () => {
     <div>
       {isAuthenticated ? (
         <div>
-        <div className="fixed h-screen w-1/5 p-5">
+        <div className="fixed h-[90vh] w-1/5 p-5">
           <form
             ref={form}
             onChange={updateFormData}
@@ -104,7 +104,7 @@ const creareventos = () => {
             </Link>
           </form>
         </div>
-        <div className="ml-[20%] w-[80%] h-screen">
+        <div className="ml-[20%] w-[80%] h-[90vh]">
           <MapContainer center={[6.24, -75.58]} zoom={15} scrollWheelZoom={true} doubleClickZoom={false}>
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

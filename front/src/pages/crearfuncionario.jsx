@@ -2,7 +2,6 @@ import axios from 'axios';
 import React from 'react'
 import useFormData from '../hooks/useFormData';
 import { useAuth0 } from "@auth0/auth0-react";
-import Navbar from '../components/Navbar';
 
 const CrearFuncionario = () => {
 
@@ -22,7 +21,6 @@ const CrearFuncionario = () => {
 
   return (
         <div className='divppl'>
-            <Navbar />
             {isAuthenticated ? (
                     <div className='grid place-items-center w-full my-20'>
                     <form className="w-full max-w-lg" ref={form} onChange={updateFormData}>

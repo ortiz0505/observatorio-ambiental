@@ -2,7 +2,6 @@ import React from 'react';
 import useFormData from '../hooks/useFormData';
 import axios from 'axios';
 import { useAuth0 } from "@auth0/auth0-react";
-import Navbar from '../components/Navbar';
 
 const primeravezreport = () => {
 
@@ -23,7 +22,6 @@ const primeravezreport = () => {
 
   return (
         <div className='divppl'>
-            <Navbar />
             {isAuthenticated ? (
                 <div className='grid place-items-center my-20 w-full'>
                 <form className="w-full max-w-lg" ref={form} onChange={updateFormData}>

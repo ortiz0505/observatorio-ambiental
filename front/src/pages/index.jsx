@@ -1,12 +1,10 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
 import {Link} from 'react-router-dom';
 
 const Index = () => {  
   return(
     <div className='divppl'>
-      <Navbar />
-      <div className='flex justify-center w-9/12 my-2 box-content p-4'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dictum ligula non ipsum commodo tincidunt. In aliquet, nibh id mattis consequat, urna tellus mollis nisi, non efficitur tellus tortor non nisl. Sed volutpat mi sit amet dictum dictum. Quisque pellentesque tellus vel magna posuere, eget viverra nulla finibus. Proin bibendum lacus a ex feugiat vestibulum. In pharetra lorem urna, sed tempor metus tristique ut. Donec laoreet erat vitae pharetra consectetur. Nullam ut dolor eu nisi viverra ullamcorper.</div>
+      <div className='flex justify-center w-9/12 my-2 box-content p-4'>Bienvenido al observatorio ambiental GeoAntioquia, una herramienta automatizada que proporciona funciones  de  reporte y observación de los fenómenos que afectan el medio ambiente. Cuenta con la facilidad para que usuarios puedan tomar esa tarea de reportar o registrar los eventos que puedan ayudar a una mejor gestión del territorio antioqueño e informar a la comunidad sobre los riesgos ambientales.</div>
       <Link to='mapageneral' className='vermapa'>
         <span className='vermapatxt'>Ver mapa general</span>
       </Link>

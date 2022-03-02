@@ -29,7 +29,7 @@ html{
 }
 
 .leaflet-container{
-    @apply w-full h-screen flex
+    @apply w-full h-[90vh] flex
 }
 
 .span-form-event{
@@ -48,7 +48,7 @@ html{
 }
 
 .enviar-event:hover{
-    background-color: rgb(20 83 45);
+    background-color: #14532d;
 }
 
 .input-event{

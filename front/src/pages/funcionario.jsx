@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
 import Notauth from '../components/404';
-import Navbar from '../components/Navbar';
 
 const funcionario = () => {
 
@@ -11,7 +10,6 @@ const funcionario = () => {
 
     return (
         <div className='divppl'>
-          <Navbar />
            {isAuthenticated ? (
              <div>
                 <div className='grid place-items-center my-20'>

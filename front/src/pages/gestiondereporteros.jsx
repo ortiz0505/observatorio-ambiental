@@ -1,6 +1,5 @@
 import React from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
-import Navbar from '../components/Navbar';
 
 const gestiondereporteros = () => {
 
@@ -9,7 +8,6 @@ const gestiondereporteros = () => {
 
   return (
     <div className='divppl'>
-        <Navbar />
           {isAuthenticated ? (
               <div className='grid place-items-center my-20'>
               <div>

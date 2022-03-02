@@ -15,10 +15,13 @@ import Seguimientos from './pages/seguimientos';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 //import './styles/globals.css';
 import CrearFuncionario from './pages/crearfuncionario';
+import Navbar from './components/Navbar';
+import EditarEvento from './pages/ediarevento';
 
 function App() {
   return (
     <BrowserRouter>
+    <Navbar/>
       <Routes>
         <Route path='' element={<Index />} />
         
@@ -35,6 +38,7 @@ function App() {
         <Route path='/funcionario/solicitudesr' element={<Solicitudesreportes />} />
         <Route path='/funcionario/crear' element={<CrearFuncionario />} />
         <Route path='/funcionario/seguimiento/:id' element={<Seguimientos />} />
+        <Route path='/funcionario/editar/:id' element={<EditarEvento />} />
         
       </Routes>
     </BrowserRouter>

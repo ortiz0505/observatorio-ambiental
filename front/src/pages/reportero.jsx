@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
-import Navbar from '../components/Navbar';
 
 const reportero = () => {
 
@@ -10,7 +9,6 @@ const reportero = () => {
 
   return (
       <div className='divppl'>
-          <Navbar />
           {isAuthenticated ? (
             <div>
                 <div className='my-20'>
