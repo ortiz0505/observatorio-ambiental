@@ -8,6 +8,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const seguimientos = () => {
 
+    const [showOptions, setShowOptions] = useState(false);
+    const handleClick = () => {
+      setShowOptions(!showOptions);   
+    };
+
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { isAuthenticated } = useAuth0();
 
@@ -22,6 +27,7 @@ const seguimientos = () => {
         data: formData,
       };
       await axios.request(options);
+      window.location.reload(true);
     };
 
     const [events, setEvents] = useState([]);
@@ -40,63 +46,75 @@ const seguimientos = () => {
   return (
     <div className="divppl">
       {isAuthenticated ? (
-        <div className="text-gray-900 bg-gray-200 w-full">
-        <form ref={form} onChange={updateFormData} className="p-4">
-          {/*<div className="p-4 flex">
-                  <h1 className="text-3xl">ID_ evento</h1>
-              </div>*/}
-          <label htmlFor="ID_evento">
-            <span className="hidden">ID evento</span>
-            <input name="ID_evento" type="text" className="input-event hidden" value={params.id} readOnly/>
-          </label>
-          <label htmlFor="ID_funcionario">
-            <span>ID funcionario</span>
-            <input name="ID_funcionario" type="text" className="input-event" />
-          </label>
-          <div className="grid grid-cols-4 gap-4">
-            <label htmlFor="tipo_seguimiento">
-              <span>Tipo de seguimiento</span>
-              <input
-                name="tipo_seguimiento"
-                type="text"
-                className="input-event"
-              />
+        <div className="form-design">
+        {showOptions && (
+          <form ref={form} onChange={updateFormData} className="p-4">
+            {/*<div className="p-4 flex">
+                    <h1 className="text-3xl">ID_ evento</h1>
+                </div>*/}
+            <label htmlFor="ID_evento">
+              <span className="hidden">ID evento</span>
+              <input name="ID_evento" type="text" className="hidden" value={params.id} readOnly/>
             </label>
-            <label htmlFor="categoria">
-              <span>Categoria</span>
-              <input name="categoria" type="text" className="input-event" />
+            <label htmlFor="ID_funcionario">
+              <span className="labelsppl">ID funcionario</span>
+              <input name="ID_funcionario" type="text" className="inputs-text-ppl" />
             </label>
-            <label htmlFor="imagen">
-              <span>Imagen URL</span>
-              <input name="imagen" type="text" className="input-event" />
-            </label>
-            <label htmlFor="enlace">
-              <span>Enlace</span>
-              <input name="enlace" type="text" className="input-event" />
-            </label>
-          </div>
-          <div className="grid grid-cols-1 gap-4">
-            <label htmlFor="descripcion">
-              <span>Descripcion</span>
-              <textarea name="descripcion" type="text" className="input-event" />
-            </label>
-          </div>
-          <div className="grid grid-cols-1 gap-4">
-            <label htmlFor="observaciones_recomendaciones">
-              <span>Observaciones/Recomendaciones</span>
-              <textarea
-                name="observaciones_recomendaciones"
-                type="text"
-                className="input-event"
-              />
-            </label>
-          </div>
-          <button type="submit" className="enviar-event" onClick={submitForm}>
-            Enviar
-          </button>
-        </form>
-        <div className="px-3 py-4 flex justify-center overflow-x-auto">
-          <table className="w-full text-base bg-white shadow-md rounded mb-4">
+            <div className="grid grid-cols-4 gap-4">
+              <label htmlFor="tipo_seguimiento">
+                <span className="labelsppl">Tipo de seguimiento</span>
+                <select name="tipo_seguimiento" type="text" className="inputs-text-ppl">
+                  <option>Control</option>
+                  <option>Cierre</option>
+                  <option>Solución</option>
+                </select>
+              </label>
+              <label htmlFor="categoria">
+                <span className="labelsppl">Categoria</span>
+                <select name="Categoria" type="text" className="inputs-text-ppl">
+                  <option>Jurídico</option>
+                  <option>Ambiental</option>
+                  <option>Social</option>
+                </select>
+              </label>
+              <label htmlFor="imagen">
+                <span className="labelsppl">Imagen URL</span>
+                <input name="imagen" type="text" className="inputs-text-ppl" />
+              </label>
+              <label htmlFor="enlace">
+                <span className="labelsppl">Enlace</span>
+                <input name="enlace" type="text" className="inputs-text-ppl" />
+              </label>
+            </div>
+            <div className="grid grid-cols-1 gap-4">
+              <label htmlFor="descripcion">
+                <span className="labelsppl">Descripcion</span>
+                <textarea name="descripcion" type="text" className="inputs-text-ppl" />
+              </label>
+            </div>
+            <div className="grid grid-cols-1 gap-4">
+              <label htmlFor="observaciones_recomendaciones">
+                <span className="labelsppl">Observaciones/Recomendaciones</span>
+                <textarea
+                  name="observaciones_recomendaciones"
+                  type="text"
+                  className="inputs-text-ppl"
+                />
+              </label>
+            </div>
+            <div className="flex justify-center">
+              <button type="submit" className="buttonsppl" onClick={submitForm}>
+                Enviar
+              </button> 
+            </div>
+          </form>
+        )}
+
+        <button onClick={handleClick} type="input" className="w-full buttonsppl">
+              v
+        </button> 
+        <div className="div-tables">
+          <table className="table-design">
             <tbody>
               <tr className="border-b">
                 <th className="text-left p-3 px-5">Descripción</th>

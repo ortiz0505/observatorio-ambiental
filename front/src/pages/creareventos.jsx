@@ -7,6 +7,7 @@ import AddMarket from "../components/AddMarket";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import Notauth from '../components/404';
+import CitiesAnt from '../components/cityselect';
 
 const creareventos = () => {
 
@@ -46,61 +47,53 @@ const creareventos = () => {
     <div>
       {isAuthenticated ? (
         <div>
-        <div className="fixed h-[90vh] w-1/5 p-5">
+        <div className="fixed h-[90vh] w-1/5 p-5 overflow-x-scroll">
           <form
             ref={form}
             onChange={updateFormData}
-            className="grid grid-cols-1 gap-4"
+            className="w-full max-w-lg"
           >
-            <Link to='/reportero'>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fillRule="currentColor">
-                <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
-              </svg>
-            </Link>
-            <label htmlFor="latitud" className='span-form-event hidden'>
+            <label htmlFor="latitud" className='hidden'>
               <span className="hidden">Latitud</span>
-              <input name="latitud" type="text" className='input-event hidden' value={position.latitude} readOnly/>
+              <input name="latitud" type="text" className='hidden' value={position.latitude} readOnly/>
             </label>
-            <label htmlFor="longitud" className='span-form-event hidden'>
+            <label htmlFor="longitud" className='hidden'>
               <span className="hidden">Longitud</span>
-              <input name="longitud" type="text" className='input-event hidden' value={position.longitude} readOnly/>
+              <input name="longitud" type="text" className='hidden' value={position.longitude} readOnly/>
             </label>
-            <label htmlFor="imagen" className='span-form-event'>
-              <span>Imagen</span>
-              <input name="imagen" type="text" className='input-event'/>
+            <label htmlFor="imagen" className='w-full'>
+              <span className="labelsppl">Imagen</span>
+              <input name="imagen" type="text" className='inputs-text-ppl'/>
             </label>
-            <label htmlFor="fecha_fin" className='span-form-event'>
-              <span>Fecha_fin</span>
-              <input name="fecha_fin" type="date" className='input-event'/>
+            <label htmlFor="fecha_fin" className='w-full'>
+              <span className="labelsppl">Fecha_fin</span>
+              <input name="fecha_fin" type="date" className='inputs-text-ppl'/>
             </label>
-            <label htmlFor="descripcion" className='span-form-event'>
-              <span>Descripcion</span>
-              <textarea name="descripcion" type="text" className='input-event'/>
+            <label htmlFor="descripcion" className='w-full'>
+              <span className="labelsppl">Descripcion</span>
+              <textarea name="descripcion" type="text" className='inputs-text-ppl'/>
             </label>
-            <label htmlFor="zona_influencia" className='span-form-event'>
-              <span>Zona_influencia</span>
-              <input name="zona_influencia" type="text" className='input-event'/>
+            <CitiesAnt />
+            <label htmlFor="ID_reportero" className='w-full'>
+              <span className="labelsppl">ID_reportero</span>
+              <input name="ID_reportero" type="text" className='inputs-text-ppl'/>
             </label>
-            <label htmlFor="ID_reportero" className='span-form-event'>
-              <span>ID_reportero</span>
-              <input name="ID_reportero" type="text" className='input-event'/>
+            <label htmlFor="prioridad" className='w-full '>
+              <span className="labelsppl">Prioridad</span>
+              <input name="prioridad" type="text" className='inputs-text-ppl'/>
             </label>
-            <label htmlFor="prioridad" className='span-form-event'>
-              <span>Prioridad</span>
-              <input name="prioridad" type="text" className='input-event'/>
+            <label htmlFor="clasificacion" className='w-full '>
+              <span className="labelsppl">Clasificacion</span>
+              <input name="clasificacion" type="text" className='inputs-text-ppl'/>
             </label>
-            <label htmlFor="clasificacion" className='span-form-event'>
-              <span>Clasificacion</span>
-              <input name="clasificacion" type="text" className='input-event'/>
-            </label>
-            <label htmlFor="enlace" className='span-form-event'>
-              <span>Enlace</span>
-              <input name="enlace" type="text" className='input-event'/>
+            <label htmlFor="enlace" className='w-full '>
+              <span className="labelsppl">Enlace</span>
+              <input name="enlace" type="text" className='inputs-text-ppl'/>
             </label>
             <Link className='flex justify-center items-center' to='/reportero'>
-            <button type="submit" className='enviar-event' onClick={submitForm}>
-              Enviar
-            </button>
+              <button type="submit" className='buttonsppl my-5' onClick={submitForm}>
+                Enviar
+              </button>
             </Link>
           </form>
         </div>

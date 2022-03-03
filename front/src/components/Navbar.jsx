@@ -18,16 +18,15 @@ const Navbar = () => {
   };
   
   return (
-    <nav className='flex justify-between p-4 bg-black w-full'>
+    <nav className='flex justify-between items-center p-5 bg-black w-full'>
         <div>
             <Link to="/">
-                <img className="w-32 items-center" src={Logo} alt="geoantioquia-logo" />
+                <img className="w-52 ml-5" src={Logo} alt="geoantioquia-logo" />
             </Link>
         </div>
         <div>
         {isAuthenticated ? (
-            <div className="flex flex-row items-center">
-                <div className="relative inline-block text-left items-center">
+                <div className="items-center">
                     <div onClick={handleClick} className='flex flex-row items-center cursor-pointer'>
                         <img src={user.picture} alt={user.name} type="button" className="w-14 rounded-full border-solid border-2 border-black hover:border-green-900" id="menu-button"/>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="white">
@@ -46,12 +45,8 @@ const Navbar = () => {
                     </div>
                     )}
                 </div>
-            </div>
-
-            
-
         ) : (
-            <div className='flex items-center mx-8'>
+            <div className='flex items-center'>
             <LoginButton />
             </div>
         )}

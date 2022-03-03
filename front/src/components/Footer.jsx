@@ -1,7 +1,12 @@
 import React from 'react';
 
 const Footer = () => {
-  return <footer className='bg-gray-400 p-4'>Este es el footer</footer>;
+  return (
+    <div className='flex justify-between text-white p-5 bg-black w-full'>
+      <div>GeoAntioquia ©</div>
+      <div>Redes sociales</div>
+    </div>
+  );
 };
 
 export default Footer;

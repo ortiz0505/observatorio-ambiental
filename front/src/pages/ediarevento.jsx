@@ -44,80 +44,82 @@ const EditarEvento = () => {
   return (
     <div className="divppl">
       {isAuthenticated ? (
-        <form
-          ref={form}
-          onChange={updateFormData}
-          className="grid grid-cols-1 gap-4"
-        >
-          <label htmlFor="imagen" className="span-form-event">
-            <span>Imagen</span>
-            <input
-              name="imagen"
-              type="text"
-              className="input-event"
-              defaultValue={event.imagen}
-            />
-          </label>
-          <label htmlFor="descripcion" className="span-form-event">
-            <span>Descripcion</span>
-            <textarea
-              name="descripcion"
-              type="text"
-              className="input-event"
-              defaultValue={event.descripcion}
-            />
-          </label>
-          <label htmlFor="zona_influencia" className="span-form-event">
-            <span>Zona_influencia</span>
-            <input
-              name="zona_influencia"
-              type="text"
-              className="input-event"
-              defaultValue={event.zona_influencia}
-            />
-          </label>
-          <label htmlFor="ID_reportero" className="span-form-event">
-            <span>ID_reportero</span>
-            <input
-              name="ID_reportero"
-              type="text"
-              className="input-event"
-              defaultValue={event.ID_reportero}
-            />
-          </label>
-          <label htmlFor="prioridad" className="span-form-event">
-            <span>Prioridad</span>
-            <input
-              name="prioridad"
-              type="text"
-              className="input-event"
-              defaultValue={event.prioridad}
-            />
-          </label>
-          <label htmlFor="clasificacion" className="span-form-event">
-            <span>Clasificacion</span>
-            <input
-              name="clasificacion"
-              type="text"
-              className="input-event"
-              defaultValue={event.clasificacion}
-            />
-          </label>
-          <label htmlFor="enlace" className="span-form-event">
-            <span>Enlace</span>
-            <input
-              name="enlace"
-              type="text"
-              className="input-event"
-              defaultValue={event.enlace}
-            />
-          </label>
-          <Link className="flex justify-center items-center" to="/reportero">
-            <button type="submit" className="enviar-event" onClick={submitForm}>
-              Enviar
-            </button>
-          </Link>
-        </form>
+        <div className='forms'>
+          <form
+            ref={form}
+            onChange={updateFormData}
+            className="w-full max-w-lg"
+          >
+            <label htmlFor="imagen" className="span-form-event">
+              <span className="labelsppl">Imagen</span>
+              <input
+                name="imagen"
+                type="text"
+                className="inputs-text-ppl"
+                defaultValue={event.imagen}
+              />
+            </label>
+            <label htmlFor="descripcion" className="span-form-event">
+              <span className="labelsppl">Descripcion</span>
+              <textarea
+                name="descripcion"
+                type="text"
+                className="inputs-text-ppl"
+                defaultValue={event.descripcion}
+              />
+            </label>
+            <label htmlFor="zona_influencia" className="span-form-event">
+              <span className="labelsppl">Zona_influencia</span>
+              <input
+                name="zona_influencia"
+                type="text"
+                className="inputs-text-ppl"
+                defaultValue={event.zona_influencia}
+              />
+            </label>
+            <label htmlFor="ID_reportero" className="span-form-event">
+              <span className="labelsppl">ID_reportero</span>
+              <input
+                name="ID_reportero"
+                type="text"
+                className="inputs-text-ppl"
+                defaultValue={event.ID_reportero}
+              />
+            </label>
+            <label htmlFor="prioridad" className="span-form-event">
+              <span className="labelsppl">Prioridad</span>
+              <input
+                name="prioridad"
+                type="text"
+                className="inputs-text-ppl"
+                defaultValue={event.prioridad}
+              />
+            </label>
+            <label htmlFor="clasificacion" className="span-form-event">
+              <span className="labelsppl">Clasificacion</span>
+              <input
+                name="clasificacion"
+                type="text"
+                className="inputs-text-ppl"
+                defaultValue={event.clasificacion}
+              />
+            </label>
+            <label htmlFor="enlace" className="span-form-event">
+              <span className="labelsppl">Enlace</span>
+              <input
+                name="enlace"
+                type="text"
+                className="inputs-text-ppl"
+                defaultValue={event.enlace}
+              />
+            </label>
+            <Link className="flex justify-center items-center" to="/reportero">
+              <button type="submit" className="buttonsppl" onClick={submitForm}>
+                Enviar
+              </button>
+            </Link>
+          </form>
+        </div>
       ) : (
         <div>Tienes que autenticarte para ingresar aqui</div>
       )}

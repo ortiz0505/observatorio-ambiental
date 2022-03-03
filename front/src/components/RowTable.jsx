@@ -10,7 +10,7 @@ const RowTable = (props) => {
   const { _id } = props;
 
   return (
-    <tr className="border-b hover:bg-[#14532d] hover:text-white bg-gray-100">
+    <tr className="row-table-design">
       <td className="p-3 px-5">{ description }</td>
       <td className="p-3 px-5">{ influence_zone }</td>
       <td className="p-3 px-5">{ date }</td>

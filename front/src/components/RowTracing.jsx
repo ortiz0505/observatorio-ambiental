@@ -9,7 +9,7 @@ const RowTracing = (props) => {
   const { enlace } = props;
   
   return (
-    <tr className="border-b hover:bg-orange-100 bg-gray-100">
+    <tr className="row-table-design">
       <td className="p-3 px-5">{descripcion}</td>
       <td className="p-3 px-5">{fecha}</td>
       <td className="p-3 px-5">{tipo_seguimiento}</td>

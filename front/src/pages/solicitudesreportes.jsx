@@ -26,12 +26,12 @@ const solicitudesreportes = () => {
   return (
     <div className="divppl">
       {isAuthenticated ? (
-          <div className="text-gray-900 bg-gray-200 w-full">
+          <div className="text-green-900 bg-gray-200 w-full">
           <div className="p-4 flex">
             <h1 className="text-3xl">Solicitudes</h1>
           </div>
           <div className="px-3 py-4 flex justify-center">
-            <table className="w-full text-md bg-white shadow-md rounded mb-4">
+            <table className="w-full text-md text-white bg-green-600 shadow-md rounded mb-4">
               <tbody>
                 <tr className="border-b">
                   <th className="text-left p-3 px-5">Descripcion</th>

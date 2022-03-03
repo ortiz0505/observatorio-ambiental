@@ -6,7 +6,7 @@ const RowTableR = (props) => {
   const { observaciones_recomendaciones } = props;
 
   return (
-    <tr className="border-b hover:bg-orange-100 bg-gray-100">
+    <tr className="row-table-design">
       <td className="p-3 px-5">{ descripcion }</td>
       <td className="p-3 px-5">{ tipo_seguimiento }</td>
       <td className="p-3 px-5">{ observaciones_recomendaciones }</td>
