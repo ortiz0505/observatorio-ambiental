@@ -8,7 +8,7 @@ eventRoute.route("/evento").get(async (req, res) => {
         const arrayEventsDB = await Event.find();
         const arrayFinal = [];
         arrayEventsDB.map((event) => {
-            if (event.estado_aprobacion === true) {
+            if (event.estado_aprobacion === true /*&& event.estado_evento === true*/) {
                 arrayFinal.push(event);
             }
         })
@@ -121,6 +121,24 @@ eventRoute.route('/evento/:id').patch(async (req, res) => {
         res.status(400).send(error)
     }
 })
+
+eventRoute.route('/evento/:id').put(async (req, res) => {
+    try {
+        const id = req.params.id
+        let status = false
+        if (req.body.status === 'abierto') {
+            status = false
+        } else status = true
+        await Event.findByIdAndUpdate(id, {
+            estado_evento: status
+        });
+        res.status(200).send({
+            status: 'ok'
+        });
+    } catch (error) {
+        res.status(400).send(error);
+    }
+});
 
 
 export {

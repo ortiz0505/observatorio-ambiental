@@ -17,6 +17,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CrearFuncionario from './pages/crearfuncionario';
 import Navbar from './components/Navbar';
 import EditarEvento from './pages/ediarevento';
+import SolicitudReporteros from './pages/solicitudreporteros';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
 
         <Route path='/pvreportero' element={<PVReportero />} />
         <Route path='/reportero' element={<Reportero />} />
+        <Route path='/solicitudreportero' element={<SolicitudReporteros />} />
         <Route path='/reportero/rreportero' element={<Reportesr />} />
         <Route path='/evento/crear' element={<Ceventos />} />
 

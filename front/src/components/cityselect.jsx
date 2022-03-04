@@ -4,7 +4,7 @@ const cityselect = () => {
   return (
     <div className='w-full'>
         <label className="labelsppl" htmlFor='zona_influencia'>Zona a la que desea contribuir</label>
-        <select className="inputs-text-ppl" id="grid-zona"  name='zona' type='text' required>
+        <select className="inputs-text-ppl" id="grid-zona"  name='zona_influencia' type='text' required>
             <option value="">Selecciona una opción...</option>   
             <option value="ABEJORRAL">ABEJORRAL</option>
             <option value="ABRIAQUI">ABRIAQUI</option>

@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 
 const reporterSchema = new Schema({
     nombre: String,
-    correo: String,
+    correo: {type: String, unique: true},
     descripcion: String,
     zona_influencia: String,
     estado_usuario: {type: Boolean, default: false},
-    motivo_suspension: {type: String, default: ""}
+    motivo_suspension: {type: String, default: '1'}
 })
 
 //crear el modelo
