@@ -61,20 +61,22 @@ const seguimientos = () => {
               <input name="ID_funcionario" type="text" className="inputs-text-ppl" />
             </label>
             <div className="grid grid-cols-4 gap-4">
-              <label htmlFor="tipo_seguimiento">
+              <label htmlFor='tipo_seguimiento'>
                 <span className="labelsppl">Tipo de seguimiento</span>
-                <select name="tipo_seguimiento" type="text" className="inputs-text-ppl">
-                  <option>Control</option>
-                  <option>Cierre</option>
-                  <option>Solución</option>
+                <select className="inputs-text-ppl" name='tipo_seguimiento' type='text' required>
+                  <option value="">Selecciona una opción...</option>   
+                  <option value="CONTROL">Control</option>
+                  <option value="CIERRE">Cierre</option>
+                  <option value="SOLUCIÓN">Solución</option>  
                 </select>
               </label>
-              <label htmlFor="categoria">
+              <label htmlFor='categoria'>
                 <span className="labelsppl">Categoria</span>
-                <select name="Categoria" type="text" className="inputs-text-ppl">
-                  <option>Jurídico</option>
-                  <option>Ambiental</option>
-                  <option>Social</option>
+                <select className="inputs-text-ppl" name='categoria' type='text' required>
+                  <option value="">Selecciona una opción...</option>   
+                  <option value="JURIDICO">Jurídico</option>
+                  <option value="AMBIENTAL">Ambiental</option>
+                  <option value="SOCIAL">Social</option>  
                 </select>
               </label>
               <label htmlFor="imagen">

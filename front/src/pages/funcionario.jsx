@@ -27,7 +27,7 @@ const funcionario = () => {
                       </button>
                   </div>
                 </Link>
-                <Link to='/funcionario'>
+                <Link to='/funcionario/graficas'>
                   <div>
                       <button className="inputsppls">
                         Graficas

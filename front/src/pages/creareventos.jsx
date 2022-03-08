@@ -82,7 +82,7 @@ const creareventos = () => {
                 <option value="">Selecciona una opción...</option>   
                 <option value="ALTA">Alta</option>
                 <option value="MEDIA">Media</option>
-                <option value="ALTA">Baja</option>  
+                <option value="BAJA">Baja</option>  
               </select>
             </label>
             <label htmlFor='clasificacion' className='w-full'>
