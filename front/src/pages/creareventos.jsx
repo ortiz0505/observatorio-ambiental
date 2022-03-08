@@ -26,7 +26,6 @@ const creareventos = () => {
 
       const respuesta = await axios.request(options);
       setEvents(respuesta.data);
-      console.log(respuesta.data)
     };
     eventsData();
   },[])

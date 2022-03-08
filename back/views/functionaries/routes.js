@@ -18,16 +18,20 @@ funtionaryRoute.route("/funcionario/:email").get(async (req, res)=>{
     try {
         const ArrayFuntionary = await Funtionary.find();
         let finded = false;
+        let id;
         const email = req.params.email;
         ArrayFuntionary.map((funtionary)=>{
             if(email === funtionary.correo && finded !== true){
-                finded = true    
+                finded = true,
+                id = funtionary._id    
             }  
         })
-        res.status(200).send(finded);
+        res.status(200).send({ finded, id });
     } catch (error) {
         res.status(400).send(error);
     }
 });
+
+
 
 export {funtionaryRoute};

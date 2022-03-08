@@ -13,18 +13,16 @@ const SolicitudReporteros = () => {
       };
       const res = await axios.request(options);
       setReporters(res.data);
-      console.log(res.data)
     };
     findReporters();
   }, []);
-
 
   return (
     <div className="divppl">
       {isAuthenticated ? (
         <div className="form-design">
           <div className="p-4 flex">
-            <h1 className="text-3xl">Lista de reporteros</h1>
+            <h1 className="text-3xl">Solicitud de reporteros</h1>
           </div>
           <div className="div-tables flex-col">
             <table className="table-design">
@@ -36,18 +34,54 @@ const SolicitudReporteros = () => {
                   <th className="text-left p-3 px-5">Zona de influencia</th>
                   <th className="text-left p-3 px-5">Estado</th>
                   <th className="text-left p-3 px-5">Motivo suspension</th>
+                  <th className="text-left p-3 px-5">Iconos</th>
                 </tr>
                 {reporters.map((reporter) => {
                   return (
-                    <RowReporter
-                      key={reporter._id}
-                      nombre={reporter.nombre}
-                      correo={reporter.correo}
-                      descripcion={reporter.descripcion}
-                      zona_influencia={reporter.zona_influencia}
-                      estado={reporter.estado}
-                      motivo_suspension={reporter.motivo_suspension}
-                    />
+                    reporter.estado_usuario === false?(
+                      <RowReporter
+                        key={reporter._id}
+                        _id={reporter._id}
+                        nombre={reporter.nombre}
+                        correo={reporter.correo}
+                        descripcion={reporter.descripcion}
+                        zona_influencia={reporter.zona_influencia}
+                        estado={reporter.estado_usuario}
+                        motivo_suspension={reporter.motivo_suspension}
+                      />
+                    ) : null
+                  );
+                })}
+              </tbody>
+            </table>
+            <div className="p-4 flex">
+            <h1 className="text-3xl">Reporteros activos</h1>
+          </div>
+            <table className="table-design">
+              <tbody>
+                <tr className="border-b">
+                  <th className="text-left p-3 px-5">Nombre</th>
+                  <th className="text-left p-3 px-5">Correo</th>
+                  <th className="text-left p-3 px-5">Descripcion</th>
+                  <th className="text-left p-3 px-5">Zona de influencia</th>
+                  <th className="text-left p-3 px-5">Estado</th>
+                  <th className="text-left p-3 px-5">Motivo suspension</th>
+                  <th className="text-left p-3 px-5">Iconos</th>
+                </tr>
+                {reporters.map((reporter) => {
+                  return (
+                    reporter.estado_usuario === true ?(
+                      <RowReporter
+                        key={reporter._id}
+                        _id={reporter._id}
+                        nombre={reporter.nombre}
+                        correo={reporter.correo}
+                        descripcion={reporter.descripcion}
+                        zona_influencia={reporter.zona_influencia}
+                        estado={reporter.estado_usuario}
+                        motivo_suspension={reporter.motivo_suspension}
+                      />
+                    ) : null
                   );
                 })}
               </tbody>
@@ -70,16 +104,45 @@ const RowReporter = ({
   estado,
   motivo_suspension,
 }) => {
-  console.log(motivo_suspension)
-  console.log(nombre)
+  const agreeReporter = async () => {
+    const options = {
+      method: "put",
+      url: `http://localhost:4000/reportero/${_id}`,
+      data: { estado },
+    };
+    await axios.request(options);
+    window.location.reload(true)
+  };
   return (
     <tr className="row-table-design">
       <td className="p-3 px-5">{nombre}</td>
       <td className="p-3 px-5">{correo}</td>
       <td className="p-3 px-5">{descripcion}</td>
       <td className="p-3 px-5">{zona_influencia}</td>
-      <td className="p-3 px-5">{estado ? 'Activado' : 'Desactivado'}</td>
-      <td className="p-3 px-5">{motivo_suspension === '1' ? 'Sin suspencion' : motivo_suspension}</td>
+      <td className="p-3 px-5">{estado ? "Activado" : "Desactivado"}</td>
+      <td className="p-3 px-5">
+        {motivo_suspension === "1" ? "Sin suspencion" : motivo_suspension}
+      </td>
+
+      <td className="p-3 px-5 flex">
+        <button onClick={agreeReporter}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 mx-2 fill-green-900"
+            viewBox="0 0 20 20"
+          >
+            <title id="title" lang="en">
+              Aceptar
+            </title>
+            <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+            <path
+              fillRule="evenodd"
+              d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </button>
+      </td>
     </tr>
   );
 };

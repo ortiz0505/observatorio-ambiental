@@ -97,3 +97,19 @@ html{
 .input-event{
     @apply border-2 rounded-lg border-black w-full 
 }
+
+.popupContent {
+    @apply text-center h-[350px] mt-[30px]
+}
+
+.popupHead{
+    @apply font-bold text-xl
+}
+
+.popupText{
+    @apply text-base mb-5
+}
+
+.okText{
+    @apply text-xs
+}

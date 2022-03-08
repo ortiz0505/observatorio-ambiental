@@ -88,14 +88,14 @@ const Navbar = () => {
                   <div className="py-1" role="none">
                     <Profile />
                     {
-                        isFuntionary ? (
+                        isFuntionary.finded ? (
                     <Link to="/funcionario" className="navoptions">
                       Funcionario
                     </Link>
                         ) : null
                     }
                     {
-                        isReporter ? (
+                        isReporter.finded ? (
                     <Link to="/reportero" className="navoptions">
                       Reportero
                     </Link>

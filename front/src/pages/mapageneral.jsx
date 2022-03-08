@@ -37,7 +37,28 @@ const mapageneral = () => {
         {events.map((event) =>
           event.estado_evento ? (
             <Marker key={event._id} position={[event.latitud, event.longitud]}>
-              <Popup>{event.descripcion}</Popup>
+              <Popup className="request-popup">
+                <div className="popupContent">
+                  <div className="flex justify-center">
+                  <img
+                    src="https://files.rcnradio.com/public/2020-04/derrumbe_sonson_narino_0.jpeg"
+                    alt="event"
+                  />
+                  </div>
+                  <div className='popupHead'>
+                  Clasificacion: {event.clasificacion}
+                  </div>
+                  <span className='popupText'>
+                    Descripcion: {event.descripcion}
+                  </span>
+                  <div className="okText">
+                    Fecha inicio: {(event.fecha_inicio)}
+                  </div>
+                  <div className="okText">
+                    Fecha estimada de cierre: {(event.fecha_fin)}
+                  </div>
+                </div>
+              </Popup>
             </Marker>
           ) : null
         )}
