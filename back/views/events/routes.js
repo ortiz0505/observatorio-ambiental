@@ -29,6 +29,22 @@ eventRoute.route('/evento/:id').get(async (req, res) => {
     }
 })
 
+eventRoute.route("/evento/zona/:zona_influencia").get(async (req, res)=>{
+    try {
+        const arrayEventsDB = await Event.find();
+        const arrayFinal = [];
+        const zona = req.params.zona_influencia;
+        arrayEventsDB.map((event)=>{
+            if(zona === event.zona_influencia){
+                arrayFinal.push(event);
+            }
+        })
+        res.status(200).send(arrayFinal);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+});
+
 eventRoute.route("/solicitudesr").get(async (req, res) => {
     try {
         const arrayEvents = await Event.find();

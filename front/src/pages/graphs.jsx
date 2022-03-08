@@ -34,9 +34,6 @@ const graphs = () => {
         eventsData();
     }, []);
 
-
-    
-    
     events.map((event) => {
         console.log(event)
         if(!zonas.includes(event.zona_influencia)){
@@ -86,7 +83,6 @@ const graphs = () => {
             cS.push(Tracing.categoria);
         }
     });
-
 
     const seriesz = [zI.length, zF.length, zD.length]; //our data
     const optionsz = { labels: ["Informativo", "Formativo", "denuncia"] };
