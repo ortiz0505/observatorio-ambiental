@@ -11,6 +11,7 @@ import Reportesf from './pages/reportesf';
 import Solicitudesreportes from './pages/solicitudesreportes';
 import Ceventos from './pages/creareventos';
 import Seguimientos from './pages/seguimientos';
+import Graphs from './pages/graphs';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 //import './styles/globals.css';
@@ -41,6 +42,7 @@ function App() {
         <Route path='/funcionario/crear' element={<CrearFuncionario />} />
         <Route path='/funcionario/seguimiento/:id' element={<Seguimientos />} />
         <Route path='/funcionario/editar/:id' element={<EditarEvento />} />
+        <Route path='/funcionario/graficas' element={<Graphs />} />
         
       </Routes>
     </BrowserRouter>

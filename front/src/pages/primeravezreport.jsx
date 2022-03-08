@@ -2,6 +2,7 @@ import useFormData from "../hooks/useFormData";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import CitiesAnt from "../components/cityselect";
+import { Link } from "react-router-dom";
 
 const primeravezreport = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -85,13 +86,15 @@ const primeravezreport = () => {
             <div className="flex tems-center">
               <div className="w-1/3"></div>
               <div className="w-2/3">
-                <button
-                  type="submit"
-                  onClick={submitForm}
-                  className="buttonsppl"
-                >
-                  Enviar registro
-                </button>
+                <Link to='/'>
+                  <button
+                    type="submit"
+                    onClick={submitForm}
+                    className="buttonsppl"
+                  >
+                    Enviar registro
+                  </button>
+                </Link>
               </div>
             </div>
           </form>

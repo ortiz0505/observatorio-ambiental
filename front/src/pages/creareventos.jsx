@@ -10,7 +10,6 @@ import Notauth from '../components/404';
 import CitiesAnt from '../components/cityselect';
 
 const creareventos = () => {
-
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { isAuthenticated } = useAuth0();
   const [events, setEvents] = useState([]);
@@ -77,13 +76,23 @@ const creareventos = () => {
               <span className="labelsppl">ID_reportero</span>
               <input name="ID_reportero" type="text" className='inputs-text-ppl'/>
             </label>
-            <label htmlFor="prioridad" className='w-full '>
+            <label htmlFor='prioridad' className='w-full'>
               <span className="labelsppl">Prioridad</span>
-              <input name="prioridad" type="text" className='inputs-text-ppl'/>
+              <select className="inputs-text-ppl" id="grid-zona"  name='prioridad' type='text' required>
+                <option value="">Selecciona una opción...</option>   
+                <option value="ALTA">Alta</option>
+                <option value="MEDIA">Media</option>
+                <option value="ALTA">Baja</option>  
+              </select>
             </label>
-            <label htmlFor="clasificacion" className='w-full '>
+            <label htmlFor='clasificacion' className='w-full'>
               <span className="labelsppl">Clasificacion</span>
-              <input name="clasificacion" type="text" className='inputs-text-ppl'/>
+              <select className="inputs-text-ppl" id="grid-zona"  name='clasificacion' type='text' required>
+                <option value="">Selecciona una opción...</option>   
+                <option value="DENUNCIA">Denuncia</option>
+                <option value="FORMATIVO">Formativo</option>
+                <option value="INFORMATIVO">Informativo</option>  
+              </select>
             </label>
             <label htmlFor="enlace" className='w-full '>
               <span className="labelsppl">Enlace</span>
