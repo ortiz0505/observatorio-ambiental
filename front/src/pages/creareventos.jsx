@@ -31,7 +31,8 @@ const creareventos = () => {
 
   const { form, formData, updateFormData } = useFormData();
 
-  const submitForm = async () => {
+  const submitForm = async (e) => {
+    e.preventDefault();
     const options = {
       method: "POST",
       url: "http://localhost:4000/evento",
@@ -39,6 +40,7 @@ const creareventos = () => {
       data: formData,
     };
     await axios.request(options);
+
   };
 
   return (
@@ -50,31 +52,32 @@ const creareventos = () => {
             ref={form}
             onChange={updateFormData}
             className="w-full max-w-lg"
+            id='formevent'
           >
             <label htmlFor="latitud" className='hidden'>
               <span className="hidden">Latitud</span>
-              <input name="latitud" type="text" className='hidden' value={position.latitude} readOnly/>
+              <input name="latitud" type="text" className='hidden' value={position.latitude} required readOnly/>
             </label>
             <label htmlFor="longitud" className='hidden'>
               <span className="hidden">Longitud</span>
-              <input name="longitud" type="text" className='hidden' value={position.longitude} readOnly/>
+              <input name="longitud" type="text" className='hidden' value={position.longitude} required readOnly/>
             </label>
             <label htmlFor="imagen" className='w-full'>
               <span className="labelsppl">Imagen</span>
-              <input name="imagen" type="text" className='inputs-text-ppl'/>
+              <input name="imagen" type="text" className='inputs-text-ppl' required/>
             </label>
             <label htmlFor="fecha_fin" className='w-full'>
               <span className="labelsppl">Fecha_fin</span>
-              <input name="fecha_fin" type="date" className='inputs-text-ppl'/>
-            </label>
+              <input name="fecha_fin" type="date" className='inputs-text-ppl' required/>
+            </label> 
             <label htmlFor="descripcion" className='w-full'>
               <span className="labelsppl">Descripcion</span>
-              <textarea name="descripcion" type="text" className='inputs-text-ppl'/>
+              <textarea name="descripcion" type="text" className='inputs-text-ppl' required/>
             </label>
             <CitiesAnt />
             <label htmlFor="ID_reportero" className='w-full'>
               <span className="labelsppl">ID_reportero</span>
-              <input name="ID_reportero" type="text" className='inputs-text-ppl'/>
+              <input name="ID_reportero" type="text" className='inputs-text-ppl' required/>
             </label>
             <label htmlFor='prioridad' className='w-full'>
               <span className="labelsppl">Prioridad</span>
@@ -96,13 +99,11 @@ const creareventos = () => {
             </label>
             <label htmlFor="enlace" className='w-full '>
               <span className="labelsppl">Enlace</span>
-              <input name="enlace" type="text" className='inputs-text-ppl'/>
+              <input name="enlace" type="text" className='inputs-text-ppl' required/>
             </label>
-            <Link className='flex justify-center items-center' to='/reportero'>
               <button type="submit" className='buttonsppl my-5' onClick={submitForm}>
                 Enviar
               </button>
-            </Link>
           </form>
         </div>
         <div className="ml-[20%] w-[80%] h-[90vh]">
