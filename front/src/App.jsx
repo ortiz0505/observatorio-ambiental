@@ -6,7 +6,6 @@ import PVReportero from './pages/primeravezreport';
 import Reportesr from './pages/reportesr';
 
 import Funcionario from './pages/funcionario';
-import Gestionreporteros from './pages/gestiondereporteros';
 import Reportesf from './pages/reportesf';
 import Solicitudesreportes from './pages/solicitudesreportes';
 import Ceventos from './pages/creareventos';
@@ -36,7 +35,6 @@ function App() {
         <Route path='/evento/crear' element={<Ceventos />} />
 
         <Route path='/funcionario' element={<Funcionario />} />
-        <Route path='/funcionario/gestiondereporteros' element={<Gestionreporteros />} />
         <Route path='/funcionario/rfuncionario' element={<Reportesf />} />
         <Route path='/funcionario/solicitudesr' element={<Solicitudesreportes />} />
         <Route path='/funcionario/crear' element={<CrearFuncionario />} />

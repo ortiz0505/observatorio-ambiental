@@ -38,14 +38,18 @@ reporterRoute.route('/reportero/:email').get(async (req, res) => {
         const ArrayReporter = await Reporter.find();
         let finded = false;
         let id;
+        let estado_usuario;
+        let zona_influencia;
         const email = req.params.email;
         ArrayReporter.map((reporter) => {
             if (email === reporter.correo && finded !== true) {
                 finded = true,
-                id = reporter._id
+                id = reporter._id,
+                zona_influencia = reporter.zona_influencia,
+                estado_usuario = reporter.estado_usuario
             }
         })
-        res.status(200).send({ finded, id });
+        res.status(200).send({ finded, id, estado_usuario, zona_influencia });
     } catch (error) {
         res.status(400).send(error);
     }
@@ -55,11 +59,13 @@ reporterRoute.route('/reportero/:id').put(async (req, res) => {
     try {
         const id = req.params.id
         let status = false
+        let motivo = req.body.motivo
         if (req.body.estado === true) {
             status = false
         } else status = true
         await Reporter.findByIdAndUpdate(id, {
-            estado_usuario: status
+            estado_usuario: status,
+            motivo_suspension: motivo
         });
         res.status(200).send({
             status: 'ok'

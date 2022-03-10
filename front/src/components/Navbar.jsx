@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Logo from "../assets/geoantioquia-logo-txt.png";
 
 import { useAuth0 } from "@auth0/auth0-react";
@@ -39,6 +39,13 @@ const Navbar = () => {
 
   return (
     <nav className="flex justify-between p-4 bg-black w-full">
+      {isAuthenticated && user.email === 'melissa.vf0217@gmail.com'?
+      <Link to='../funcionario/crear'>
+        <button className="buttonsppl">Crear Funcionario</button>
+      </Link>
+        :
+        <></>
+      }
       <div>
         <Link to="/">
           <img
@@ -95,7 +102,7 @@ const Navbar = () => {
                         ) : null
                     }
                     {
-                        isReporter.finded ? (
+                        (isReporter.finded && isReporter.estado_usuario)? (
                     <Link to="/reportero" className="navoptions">
                       Reportero
                     </Link>

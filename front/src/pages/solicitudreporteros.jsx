@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
@@ -104,11 +105,12 @@ const RowReporter = ({
   estado,
   motivo_suspension,
 }) => {
-  const agreeReporter = async () => {
+  const [motivo, setMotivo] = useState();
+  const agreeReporter = async (motivo) => {
     const options = {
       method: "put",
       url: `http://localhost:4000/reportero/${_id}`,
-      data: { estado },
+      data: { estado, motivo },
     };
     await axios.request(options);
     window.location.reload(true)
@@ -121,11 +123,11 @@ const RowReporter = ({
       <td className="p-3 px-5">{zona_influencia}</td>
       <td className="p-3 px-5">{estado ? "Activado" : "Desactivado"}</td>
       <td className="p-3 px-5">
-        {motivo_suspension === "1" ? "Sin suspencion" : motivo_suspension}
+        <input onChange={e=>setMotivo(e.target.value)} defaultValue={motivo_suspension === "1" ? "Sin suspencion" : motivo_suspension} />
       </td>
 
       <td className="p-3 px-5 flex">
-        <button onClick={agreeReporter}>
+        <button onClick={()=>agreeReporter(motivo)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5 mx-2 fill-green-900"
