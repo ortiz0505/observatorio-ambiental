@@ -8,12 +8,13 @@ import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import Notauth from '../components/404';
 import CitiesAnt from '../components/cityselect';
-
+ 
 const creareventos = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { isAuthenticated } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
   const [events, setEvents] = useState([]);
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
+  const [isReporter, setIsReporter] = useState(false);
 
   useEffect(()=>{
     const eventsData = async () =>{
@@ -22,7 +23,6 @@ const creareventos = () => {
         url: 'http://localhost:4000/evento',
         headers: {'Content-Type': 'application/json'},
       }
-
       const respuesta = await axios.request(options);
       setEvents(respuesta.data);
     };
@@ -40,7 +40,17 @@ const creareventos = () => {
       data: formData,
     };
     await axios.request(options);
+    window.location.href = "/reportero";
+  };
 
+  const findReport = async () => {
+    const options = {
+      method: "get",
+      url: `http://localhost:4000/reportero/${user.email}`,
+    };
+    const res = await axios.request(options);
+    setIsReporter(res.data);
+    console.log(res.data);
   };
 
   return (
@@ -51,6 +61,7 @@ const creareventos = () => {
           <form
             ref={form}
             onChange={updateFormData}
+            onSubmit={submitForm}
             className="w-full max-w-lg"
             id='formevent'
           >
@@ -101,10 +112,11 @@ const creareventos = () => {
               <span className="labelsppl">Enlace</span>
               <input name="enlace" type="text" className='inputs-text-ppl' required/>
             </label>
-              <button type="submit" className='buttonsppl my-5' onClick={submitForm}>
+              <button type="submit" className='buttonsppl my-5'>
                 Enviar
               </button>
           </form>
+          <button onClick={findReport}>x</button>
         </div>
         <div className="ml-[20%] w-[80%] h-[90vh]">
           <MapContainer center={[6.24, -75.58]} zoom={15} scrollWheelZoom={true} doubleClickZoom={false}>

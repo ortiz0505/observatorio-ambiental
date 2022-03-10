@@ -146,7 +146,8 @@ eventRoute.route('/evento/:id').put(async (req, res) => {
             status = false
         } else status = true
         await Event.findByIdAndUpdate(id, {
-            estado_evento: status
+            estado_evento: status,
+            fecha_fin: Date.now()
         });
         res.status(200).send({
             status: 'ok'

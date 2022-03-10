@@ -2,7 +2,6 @@ import useFormData from "../hooks/useFormData";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import CitiesAnt from "../components/cityselect";
-import { Link } from "react-router-dom";
 
 const primeravezreport = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -19,6 +18,7 @@ const primeravezreport = () => {
       data: formData,
     };
     await axios.request(options);
+    window.location.href = "/";
   };
 
   return (
@@ -29,6 +29,7 @@ const primeravezreport = () => {
             className="w-full max-w-lg"
             ref={form}
             onChange={updateFormData}
+            onSubmit={submitForm}
           >
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full px-3">
@@ -41,7 +42,8 @@ const primeravezreport = () => {
                   name="nombre"
                   type="text"
                   value={user.name}
-                  readonly
+                  readOnly
+                  required
                 />
               </div>
             </div>
@@ -56,7 +58,8 @@ const primeravezreport = () => {
                   name="correo"
                   type="email"
                   value={user.email}
-                  readonly
+                  readOnly
+                  required
                 />
               </div>
             </div>
@@ -74,27 +77,25 @@ const primeravezreport = () => {
                   name="descripcion"
                   type="text"
                   placeholder="Escribe aquí tu motivo"
+                  required
                 />
               </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
               <label className="w-2/3 block text-green-900 font-bold">
-                <input className="mr-2 leading-tight" type="checkbox" />
+                <input className="mr-2 leading-tight" type="checkbox" name="terms" required/>
                 <span className="text-sm">Aceptar terminos y condiciones</span>
               </label>
             </div>
             <div className="flex tems-center">
               <div className="w-1/3"></div>
               <div className="w-2/3">
-                <Link to='/'>
                   <button
                     type="submit"
-                    onClick={submitForm}
                     className="buttonsppl"
                   >
                     Enviar registro
                   </button>
-                </Link>
               </div>
             </div>
           </form>

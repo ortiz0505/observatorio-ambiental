@@ -48,7 +48,7 @@ const seguimientos = () => {
       {isAuthenticated ? (
         <div className="form-design">
         {showOptions && (
-          <form ref={form} onChange={updateFormData} className="p-4">
+          <form ref={form} onChange={updateFormData} onSubmit={submitForm} className="p-4">
             {/*<div className="p-4 flex">
                     <h1 className="text-3xl">ID_ evento</h1>
                 </div>*/}
@@ -58,7 +58,7 @@ const seguimientos = () => {
             </label>
             <label htmlFor="ID_funcionario">
               <span className="labelsppl">ID funcionario</span>
-              <input name="ID_funcionario" type="text" className="inputs-text-ppl" />
+              <input name="ID_funcionario" type="text" className="inputs-text-ppl" required/>
             </label>
             <div className="grid grid-cols-4 gap-4">
               <label htmlFor='tipo_seguimiento'>
@@ -81,17 +81,17 @@ const seguimientos = () => {
               </label>
               <label htmlFor="imagen">
                 <span className="labelsppl">Imagen URL</span>
-                <input name="imagen" type="text" className="inputs-text-ppl" />
+                <input name="imagen" type="text" className="inputs-text-ppl" required/>
               </label>
               <label htmlFor="enlace">
                 <span className="labelsppl">Enlace</span>
-                <input name="enlace" type="text" className="inputs-text-ppl" />
+                <input name="enlace" type="text" className="inputs-text-ppl" required/>
               </label>
             </div>
             <div className="grid grid-cols-1 gap-4">
               <label htmlFor="descripcion">
                 <span className="labelsppl">Descripcion</span>
-                <textarea name="descripcion" type="text" className="inputs-text-ppl" />
+                <textarea name="descripcion" type="text" className="inputs-text-ppl" required/>
               </label>
             </div>
             <div className="grid grid-cols-1 gap-4">
@@ -101,11 +101,12 @@ const seguimientos = () => {
                   name="observaciones_recomendaciones"
                   type="text"
                   className="inputs-text-ppl"
+                  required
                 />
               </label>
             </div>
             <div className="flex justify-center">
-              <button type="submit" className="buttonsppl" onClick={submitForm}>
+              <button type="submit" className="buttonsppl">
                 Enviar
               </button> 
             </div>
@@ -115,6 +116,9 @@ const seguimientos = () => {
         <button onClick={handleClick} type="input" className="w-full buttonsppl">
               v
         </button> 
+        <div className="p-4 flex">
+            <h1 className="text-3xl">Seguimientos</h1>
+        </div>
         <div className="div-tables">
           <table className="table-design">
             <tbody>

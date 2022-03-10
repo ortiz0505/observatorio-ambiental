@@ -39,6 +39,7 @@ const EditarEvento = () => {
       data: datosEditados,
     };
     await axios.request(options);
+    window.location.href = "/funcionario/rfuncionario";
     console.log(datosEditados);
   };
   return (
@@ -48,6 +49,7 @@ const EditarEvento = () => {
           <form
             ref={form}
             onChange={updateFormData}
+            onSubmit={submitForm}
             className="w-full max-w-lg"
           >
             <label htmlFor="imagen" className="span-form-event">
@@ -57,6 +59,7 @@ const EditarEvento = () => {
                 type="text"
                 className="inputs-text-ppl"
                 defaultValue={event.imagen}
+                required
               />
             </label>
             <label htmlFor="descripcion" className="span-form-event">
@@ -66,6 +69,7 @@ const EditarEvento = () => {
                 type="text"
                 className="inputs-text-ppl"
                 defaultValue={event.descripcion}
+                required
               />
             </label>
             <label htmlFor="zona_influencia" className="span-form-event">
@@ -75,6 +79,7 @@ const EditarEvento = () => {
                 type="text"
                 className="inputs-text-ppl"
                 defaultValue={event.zona_influencia}
+                required
               />
             </label>
             <label htmlFor="ID_reportero" className="span-form-event">
@@ -84,6 +89,7 @@ const EditarEvento = () => {
                 type="text"
                 className="inputs-text-ppl"
                 defaultValue={event.ID_reportero}
+                required
               />
             </label>
             <label htmlFor="prioridad" className="span-form-event">
@@ -93,6 +99,7 @@ const EditarEvento = () => {
                 type="text"
                 className="inputs-text-ppl"
                 defaultValue={event.prioridad}
+                required
               />
             </label>
             <label htmlFor="clasificacion" className="span-form-event">
@@ -102,6 +109,7 @@ const EditarEvento = () => {
                 type="text"
                 className="inputs-text-ppl"
                 defaultValue={event.clasificacion}
+                required
               />
             </label>
             <label htmlFor="enlace" className="span-form-event">
@@ -111,13 +119,14 @@ const EditarEvento = () => {
                 type="text"
                 className="inputs-text-ppl"
                 defaultValue={event.enlace}
+                required
               />
             </label>
-            <Link className="flex justify-center items-center" to="/reportero">
-              <button type="submit" className="buttonsppl" onClick={submitForm}>
+            <div className="flex justify-center items-center">
+              <button type="submit" className="buttonsppl">
                 Enviar
               </button>
-            </Link>
+            </div>
           </form>
         </div>
       ) : (
