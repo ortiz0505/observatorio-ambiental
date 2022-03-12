@@ -34,7 +34,7 @@ const funcionario = () => {
                       </button>
                   </div>
                 </Link>
-                <Link to='/solicitudreportero'>
+                <Link to='../solicitudreportero'>
                   <div>
                       <button className="inputsppls">
                         Gestion de reporteros
