@@ -12,7 +12,7 @@ export default function GraphByZone({zones, options, data}) {
     const reducedData = useMemo(() => filteredData.reduce((acc, curr) => {
         if(curr.clasificacion==="INFORMATIVO") acc[0] = acc[0] + 1;
         if(curr.clasificacion==="FORMATIVO") acc[1] = acc[1] + 1;
-        if(curr.clasificacion==="DENUNCIA") acc[2] = acc[2] + 1
+        if(curr.clasificacion==="DENUNCIA") acc[2] = acc[2] + 1;
         return acc
     }, [0, 0, 0]), [filteredData])
 

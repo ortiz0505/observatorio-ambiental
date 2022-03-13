@@ -7,15 +7,11 @@ import Notauth from '../components/404';
 import Pgraph from "../components/Pgraph";
 import GraphByZone from "../components/GraphByZone";
 
-    const pA = [];
-    const pM = [];
-    const pB = [];
     const cJ = [];
     const cA = [];
     const cS = [];
     const eOp = [];
     const eCl = [];
-    const diaseventos = [];
 
 const graphs = () => {
 
@@ -23,6 +19,10 @@ const graphs = () => {
     const [events, setEvents] = useState([]);
     const [tracingData, setTracingData] = useState([]);
     const [zones, setZones] = useState([]);
+    const [priorities, setPriorities] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [status, setStatus] = useState([]);
+    const [diasEventos, setDiasEventos] = useState([]);
 
     useEffect(() => {
         
@@ -39,40 +39,43 @@ const graphs = () => {
 
     useEffect(() => {
       if(events.length > 0){
+
         const mappedZones = events.map(event => event.zona_influencia)
-        const reduced = mappedZones.reduce((acc, curr) => {
+        const reducedZones = mappedZones.reduce((acc, curr) => {
             if(acc.includes(curr)) return acc;
             return [...acc, curr];
         }, [])
-        setZones(reduced);
+        setZones(reducedZones);
+
+        const mappedPriorities = events.map(event => event.prioridad)
+        const reducedPriorities = mappedPriorities.reduce((acc, curr) => {
+            if(curr==="ALTA") acc[0] = acc[0] + 1;
+            if(curr==="MEDIA") acc[1] = acc[1] + 1;
+            if(curr==="BAJA") acc[2] = acc[2] + 1;
+            return acc;
+        }, [0, 0, 0])
+        setPriorities(reducedPriorities)
+        
+        const mappedStatus = events.map(event => ([event.estado_evento, event.clasificacion, event.fecha_inicio, event.fecha_fin]))
+        const reducedStatus = mappedStatus.reduce((acc, curr) => {
+            if(curr[0]===true) acc[0] = acc[0] + 1;
+            if(curr[0]===false){
+                acc[1] = acc[1] + 1;
+                if(curr[1]==="DENUNCIA"){
+                    const fecha_inicio = curr[2].split('T');
+                    const tiempo_inicio = new Date(fecha_inicio[0]);
+                    const fecha_fin = curr[3].split('T');
+                    const tiempo_fin = new Date(fecha_fin[0]);
+                    acc[2] = acc[2] + (tiempo_fin.getTime()-tiempo_inicio.getTime())/(1000*60*60*24);
+                    acc[3] = acc[3] + 1 
+                }
+            } 
+            return acc;
+        }, [0, 0, 0, 0])
+        setStatus(reducedStatus.slice(0,2));
+        setDiasEventos(reducedStatus.slice(2,4));
       }
     }, [events.length])
-    
-
-    events.map((event) => {
-        if(event.prioridad==="ALTA"){
-            pA.push(event.prioridad)
-        }
-        if(event.prioridad==="MEDIA"){
-            pM.push(event.prioridad)
-        }
-        if(event.prioridad==="BAJA"){
-            pB.push(event.prioridad)
-        }
-        if(event.estado_evento === true){
-            eOp.push("abierto")
-        }
-        if(event.estado_evento === false){
-            eCl.push("cerrado")
-            if(event.clasificacion==="DENUNCIA"){
-                const fecha_inicio = event.fecha_inicio.split('T')
-                const tiempo_inicio = new Date(fecha_inicio[0])
-                const fecha_fin = event.fecha_fin.split('T')
-                const tiempo_fin = new Date(fecha_fin[0])
-                diaseventos.push((tiempo_fin.getTime()-tiempo_inicio.getTime())/(1000*60*60*24))
-            }
-        }
-    });
 
     useEffect(() => {
       const tracingData = async () => {
@@ -86,41 +89,27 @@ const graphs = () => {
       tracingData();
     }, []);
 
-    tracingData.map((Tracing) => {
-        if(Tracing.categoria==="JURIDICO"){
-            cJ.push(Tracing.categoria);
+    useEffect(() => {
+        if(tracingData.length > 0){
+          const mappedCategories = tracingData.map(tracing => tracing.categoria)
+          const reducedCategories = mappedCategories.reduce((acc, curr) => {
+              if(curr==="JURIDICO") acc[0] = acc[0] + 1;
+              if(curr==="AMBIENTAL") acc[1] = acc[1] + 1;
+              if(curr==="SOCIAL") acc[2] = acc[2] + 1;
+              return acc;
+          }, [0, 0, 0])
+          setCategories(reducedCategories)
         }
-        if(Tracing.categoria==="AMBIENTAL"){
-            cA.push(Tracing.categoria);
-        }
-        if(Tracing.categoria==="SOCIAL"){
-            cS.push(Tracing.categoria);
-        }
-    });
-
-    function ArrayAvg(myArray) {
-        var i = 0, summ = 0, ArrayLen = myArray.length;
-        while (i < ArrayLen) {
-            summ = summ + myArray[i++];
-    }
-        return summ / ArrayLen;
-    }
+      }, [tracingData.length])
 
     const zoneOptions = { labels: ["Informativo", "Formativo", "denuncia"] };
-
-    const seriesp = [pA.length, pM.length, pB.length]; //our data
     const optionsp = { labels: ["Alta", "Media", "Baja"] };
-    
-    const seriesc = [cJ.length, cA.length, cS.length]; //our data
     const optionsc = { labels: ["Jurídico", "Ambiental", "Social"] };
-
-    const seriesopcl = [eOp.length, eCl.length]; //our data
     const optionsopcl = { labels: ["Abierto", "Cerrado"] };
+    const seriesec = [diasEventos[0]/diasEventos[1]];
+    const optionsec = {labels: ["Tiempo en dias"]};
 
-    const seriesec = [ArrayAvg(diaseventos)]; //70 percent
-    const optionsec = {
-    labels: ["Tiempo en dias"], //label of this diagram
-    };
+
     return (
     <div className='divppl'>
         {isAuthenticated ? (
@@ -135,7 +124,7 @@ const graphs = () => {
                     <Pgraph 
                         name="Categorias por Evento"
                         options={optionsc}
-                        series={seriesc}
+                        series={categories}
                         type="donut"
                     />
                 </div>
@@ -143,16 +132,24 @@ const graphs = () => {
                     <Pgraph 
                         name="# eventos por prioridad"
                         options={optionsp}
-                        series={seriesp}
+                        series={priorities}
                     />
                 </div>
                 <div className='rounded-xl bg-gray-200 shadow-md p-5 m-4 grid place-content-center'>
-                    <span className="text-center text-green-900 text-2xl my-2 font-bold uppercase">Eventos abiertos/cerrados</span>
-                    <ReactApexChart options={optionsopcl} series={seriesopcl} type="donut" width="500" />
+                    <Pgraph 
+                        name="Eventos abiertos/cerrados"
+                        options={optionsopcl}
+                        series={status}
+                        type="donut"
+                    />
                 </div>
                 <div className='rounded-xl bg-gray-200 shadow-md p-5 m-4 grid place-content-center'>
-                    <span className="text-center text-green-900 text-2xl my-2 font-bold uppercase">Tiempo promedio entre la apertura y cierre de evento cuando son de denuncia</span>
-                    <ReactApexChart type="radialBar" series={seriesec} options={optionsec} width="500" />
+                    <Pgraph 
+                        name="Tiempo promedio entre la apertura y cierre de evento cuando son de denuncia"
+                        options={optionsec}
+                        series={seriesec}
+                        type="radialBar"
+                    />
                 </div>
             </div>
             ) : (
