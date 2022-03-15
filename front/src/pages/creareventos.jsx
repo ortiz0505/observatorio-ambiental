@@ -56,19 +56,7 @@ const creareventos = () => {
     await axios.request(options);
     window.location.href = "/reportero";
   };
-
-  const findReport = async () => {
-    const options = {
-      method: "get",
-      url: `http://localhost:4000/reportero/${user.email}`,
-    };
-    const res = await axios.request(options);
-    setIsReporter(res.data);
-    console.log(res.data);
-  };
-
-
-
+  
   return (
     <div>
       {isAuthenticated ? (

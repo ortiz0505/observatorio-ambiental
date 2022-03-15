@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from "react";
-import ReactApexChart from "react-apexcharts";
 /* eslint-disable react-hooks/rules-of-hooks */
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import Notauth from '../components/404';
 import Pgraph from "../components/Pgraph";
 import GraphByZone from "../components/GraphByZone";
-
-    const cJ = [];
-    const cA = [];
-    const cS = [];
-    const eOp = [];
-    const eCl = [];
 
 const graphs = () => {
 
