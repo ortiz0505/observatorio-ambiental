@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import RowEvents from "../components/RowEvents";
 import { useAuth0 } from "@auth0/auth0-react";
 import RowEventsR from "../components/RowEventsR";
 
@@ -30,15 +29,16 @@ const reportesr = () => {
             <h1 className="text-3xl">Reportes</h1>
           </div>
           <div className="div-tables flex-col">
+            <span>REPORTES ACTIVOS</span>
             <table className="table-design">
               <tbody>
                 <tr className="border-b">
                   <th className="text-left p-3 px-5">Descripción</th>
                   <th className="text-left p-3 px-5">Estado</th>
-                  <th className="text-left p-3 px-5">Zona influencia</th>
+                  <th className="text-left p-3 px-5">Zona de influencia</th>
                   <th className="text-left p-3 px-5">Prioridad</th>
                   <th className="text-left p-3 px-5">Clasificación</th>
-                  <th className="text-left p-3 px-5">enlace</th>
+                  <th className="text-left p-3 px-5">Enlace</th>
                   <th className="text-left p-3 px-5">Fecha inicio</th>
                   <th className="text-left p-3 px-5">Fecha fin</th>
                 </tr>

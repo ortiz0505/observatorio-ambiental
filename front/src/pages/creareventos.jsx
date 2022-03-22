@@ -1,14 +1,13 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import useFormData from "../hooks/useFormData";
 import { MapContainer, Marker, TileLayer, Popup } from "react-leaflet";
 import AddMarket from "../components/AddMarket";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import Notauth from "../components/404";
-import CitiesAnt from "../components/cityselect";
-
+ 
 const creareventos = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { isAuthenticated, user } = useAuth0();
@@ -61,7 +60,6 @@ const creareventos = () => {
     <div>
       {isAuthenticated ? (
         <div>
-          {console.log(user.email , reporter)}
           <div className="fixed h-[90vh] w-1/5 p-5 overflow-x-scroll">
             <form
               ref={form}
@@ -93,7 +91,7 @@ const creareventos = () => {
                 <input name="imagen" type="text" className="inputs-text-ppl" />
               </label>
               <label htmlFor="fecha_fin" className="w-full">
-                <span className="labelsppl">Fecha_fin</span>
+                <span className="labelsppl">Fecha fin</span>
                 <input
                   name="fecha_fin"
                   type="date"
@@ -101,7 +99,7 @@ const creareventos = () => {
                 />
               </label>
               <label htmlFor="descripcion" className="w-full">
-                <span className="labelsppl">Descripcion</span>
+                <span className="labelsppl">Descripción</span>
                 <textarea
                   name="descripcion"
                   type="text"
@@ -111,34 +109,29 @@ const creareventos = () => {
               
               {reporter.map((rep) =>(
                 rep.correo === user.email ? (
-                  <label key={user.email} htmlFor="zona_influencia" className="w-full hidden">
-                    <span className="labelsppl">Zona influencia</span>
-                    <input
-                      name="zona_influencia"
-                      type="text"
-                      className="inputs-text-ppl"
-                      value={rep.zona_influencia}
-                      readOnly
-                      
-                    />
-                  </label>
-                ) : <></>
-                ) 
-              )}
-              {reporter.map((rep) =>(
-                rep.correo === user.email ? (
-                  <label key={user.email} htmlFor="ID_reportero" className="w-full hidden">
-                    <span className="labelsppl ">ID_reportero</span>
-                    <input
-                      name="ID_reportero"
-                      type="text"
-                      className="inputs-text-ppl"
-                      value={rep._id}
-                      readOnly
-                      
-                    />
-                  </label>
-                ) : <></>
+                  <Fragment key={rep._id}>
+                    <label htmlFor="zona_influencia" className="w-full hidden">
+                      <span className="labelsppl">Zona de influencia</span>
+                      <input
+                        name="zona_influencia"
+                        type="text"
+                        className="inputs-text-ppl"
+                        value={rep.zona_influencia}
+                        readOnly
+                      />
+                    </label>
+                    <label htmlFor="ID_reportero" className="w-full hidden">
+                      <span className="labelsppl ">ID_reportero</span>
+                      <input
+                        name="ID_reportero"
+                        type="text"
+                        className="inputs-text-ppl"
+                        value={rep._id}
+                        readOnly  
+                      />
+                    </label>
+                  </Fragment>
+                ) : <Fragment key={rep._id}></Fragment>
                 ) 
               )}
               <label htmlFor="prioridad" className="w-full">
@@ -157,7 +150,7 @@ const creareventos = () => {
                 </select>
               </label>
               <label htmlFor="clasificacion" className="w-full">
-                <span className="labelsppl">Clasificacion</span>
+                <span className="labelsppl">Clasificación</span>
                 <select
                   className="inputs-text-ppl"
                   id="grid-zona"

@@ -44,9 +44,9 @@ const CrearFuncionario = () => {
                         <div className="flex flex-wrap -mx-3 mb-6">
                             <div className="w-full px-3">
                                 <label className="labelsppl" for="grid-identificacion" htmlFor='identificacion'>
-                                    identificacion
+                                    Identificación
                                 </label>
-                                <input className="inputs-text-ppl" id="grid-identificacion"  name='identificacion' type='number' placeholder="identificación" required/>
+                                <input className="inputs-text-ppl" id="grid-identificacion"  name='identificacion' type='number' placeholder="Identificación" required/>
                             </div>
                         </div>
                         <div className="flex flex-wrap -mx-3 mb-6">

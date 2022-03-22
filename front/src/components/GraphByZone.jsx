@@ -30,7 +30,7 @@ export default function GraphByZone({zones, options, data}) {
                 </select>
             </label>
             <Pgraph 
-                name="Clasificacion por Zona"
+                name="Clasificación por Zona"
                 options={options}
                 series={reducedData}
             />

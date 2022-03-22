@@ -63,7 +63,7 @@ const EditarEvento = () => {
               />
             </label>
             <label htmlFor="descripcion" className="span-form-event">
-              <span className="labelsppl">Descripcion</span>
+              <span className="labelsppl">Descripción</span>
               <textarea
                 name="descripcion"
                 type="text"
@@ -73,7 +73,7 @@ const EditarEvento = () => {
               />
             </label>
             <label htmlFor="zona_influencia" className="span-form-event">
-              <span className="labelsppl">Zona_influencia</span>
+              <span className="labelsppl">Zona de influencia</span>
               <input
                 name="zona_influencia"
                 type="text"
@@ -103,7 +103,7 @@ const EditarEvento = () => {
               />
             </label>
             <label htmlFor="clasificacion" className="span-form-event">
-              <span className="labelsppl">Clasificacion</span>
+              <span className="labelsppl">Clasificación</span>
               <input
                 name="clasificacion"
                 type="text"

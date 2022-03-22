@@ -64,10 +64,10 @@ const reportesf = () => {
                 <tr className="border-b">
                   <th className="text-left p-3 px-5">Descripción</th>
                   <th className="text-left p-3 px-5">Estado</th>
-                  <th className="text-left p-3 px-5">Zona influencia</th>
+                  <th className="text-left p-3 px-5">Zona de influencia</th>
                   <th className="text-left p-3 px-5">Prioridad</th>
                   <th className="text-left p-3 px-5">Clasificación</th>
-                  <th className="text-left p-3 px-5">enlace</th>
+                  <th className="text-left p-3 px-5">Enlace</th>
                   <th className="text-left p-3 px-5">Fecha inicio</th>
                   <th className="text-left p-3 px-5">Fecha fin</th>
                 </tr>

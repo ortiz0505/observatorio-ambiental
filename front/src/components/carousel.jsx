@@ -13,27 +13,21 @@ const carousel = () => {
       <Carousel autoPlay='true' infiniteLoop='true'>
         <div>
             <img src={img1} alt='slide1' />
-            <p className="legend">Legend 1</p>
         </div>
         <div>
             <img src={img2} alt='slide2'/>
-            <p className="legend">Legend 2</p>
         </div>
         <div>
             <img src={img3} alt='slide3'/>
-            <p className="legend">Legend 3</p>
         </div>
         <div>
             <img src={img4} alt='slide4'/>
-            <p className="legend">Legend 4</p>
         </div>
         <div>
             <img src={img3} alt='slide3'/>
-            <p className="legend">Legend 3</p>
         </div>
         <div>
             <img src={img4} alt='slide4'/>
-            <p className="legend">Legend 4</p>
         </div>
     </Carousel>
     </div>

@@ -14,7 +14,7 @@ const seguimientos = () => {
     };
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const { isAuthenticated } = useAuth0();
+    const { user, isAuthenticated } = useAuth0();
 
     const { form, formData, updateFormData } = useFormData();
     const params = useParams();
@@ -29,6 +29,19 @@ const seguimientos = () => {
       await axios.request(options);
       window.location.reload(true);
     };
+
+    const [funtionary, setFuntionary] = useState();
+    useEffect(() => {
+      const findFunt = async () => {
+        const options = {
+          method: "get",
+          url: `http://localhost:4000/funcionario/${user.email}`,
+        };
+        const res = await axios.request(options);
+        setFuntionary(res.data.id);
+      };
+      findFunt();      
+    }, [])
 
     const [events, setEvents] = useState([]);
     useEffect(() => {
@@ -57,8 +70,7 @@ const seguimientos = () => {
               <input name="ID_evento" type="text" className="hidden" value={params.id} readOnly/>
             </label>
             <label htmlFor="ID_funcionario">
-              <span className="labelsppl">ID funcionario</span>
-              <input name="ID_funcionario" type="text" className="inputs-text-ppl" required/>
+              <input name="ID_funcionario" type="text" className="hidden" value={funtionary} readOnly/>
             </label>
             <div className="grid grid-cols-4 gap-4">
               <label htmlFor='tipo_seguimiento'>
@@ -90,7 +102,7 @@ const seguimientos = () => {
             </div>
             <div className="grid grid-cols-1 gap-4">
               <label htmlFor="descripcion">
-                <span className="labelsppl">Descripcion</span>
+                <span className="labelsppl">Descripción</span>
                 <textarea name="descripcion" type="text" className="inputs-text-ppl" required/>
               </label>
             </div>
@@ -114,7 +126,7 @@ const seguimientos = () => {
         )}
 
         <button onClick={handleClick} type="input" className="w-full buttonsppl">
-              v
+              Realizar un seguimiento
         </button> 
         <div className="p-4 flex">
             <h1 className="text-3xl">Seguimientos</h1>
@@ -125,12 +137,12 @@ const seguimientos = () => {
               <tr className="border-b">
                 <th className="text-left p-3 px-5">Descripción</th>
                 <th className="text-left p-3 px-5">Fecha</th>
-                <th className="text-left p-3 px-5">tipo de seguimiento</th>
+                <th className="text-left p-3 px-5">Tipo de seguimiento</th>
                 <th className="text-left p-3 px-5">Imagen</th>
                 <th className="text-left p-3 px-5">
-                  Observaciones/recomendaciones
+                  Observaciones/Recomendaciones
                 </th>
-                <th className="text-left p-3 px-5">enlace</th>
+                <th className="text-left p-3 px-5">Enlace</th>
               </tr>
               {events.map((tracing) => {
                 return (

@@ -115,7 +115,7 @@ const graphs = () => {
                 
                 <div className='rounded-xl bg-gray-200 shadow-md p-5 m-4 grid place-content-center'>
                     <Pgraph 
-                        name="Categorias por Evento"
+                        name="Categorías por Evento"
                         options={optionsc}
                         series={categories}
                         type="donut"
@@ -130,7 +130,7 @@ const graphs = () => {
                 </div>
                 <div className='rounded-xl bg-gray-200 shadow-md p-5 m-4 grid place-content-center'>
                     <Pgraph 
-                        name="Eventos abiertos/cerrados"
+                        name="Eventos Abiertos/Cerrados"
                         options={optionsopcl}
                         series={status}
                         type="donut"

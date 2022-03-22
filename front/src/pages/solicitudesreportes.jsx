@@ -34,7 +34,7 @@ const solicitudesreportes = () => {
             <table className="w-full text-md text-white bg-green-600 shadow-md rounded mb-4">
               <tbody>
                 <tr className="border-b">
-                  <th className="text-left p-3 px-5">Descripcion</th>
+                  <th className="text-left p-3 px-5">Descripción</th>
                   <th className="text-left p-3 px-5">Zona de influencia</th>
                   <th className="text-left p-3 px-5">Fecha</th>
                   <th className="text-left p-3 px-5">Prioridad</th>

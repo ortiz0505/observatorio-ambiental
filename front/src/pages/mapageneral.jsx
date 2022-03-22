@@ -46,13 +46,13 @@ const mapageneral = () => {
                   />
                   </div>
                   <div className='popupHead'>
-                  Clasificacion: {event.clasificacion}
+                  Clasificación: {event.clasificacion}
                   </div>
                   <span className='popupText'>
-                    Descripcion: {event.descripcion}
+                    Descripción: {event.descripcion}
                   </span>
                   <div className="okText">
-                    Fecha inicio: {(event.fecha_inicio)}
+                    Fecha de inicio: {(event.fecha_inicio)}
                   </div>
                   <div className="okText">
                     Fecha estimada de cierre: {(event.fecha_fin)}

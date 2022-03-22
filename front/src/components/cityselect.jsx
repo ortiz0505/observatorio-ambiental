@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 const cityselect = () => {
   return (
-    <div className='w-full'>
+    <Fragment>
         <label className="labelsppl" htmlFor='zona_influencia'>Zona a la que desea contribuir</label>
         <select className="inputs-text-ppl" id="grid-zona"  name='zona_influencia' type='text' required>
             <option value="">Selecciona una opción...</option>   
@@ -132,7 +132,7 @@ const cityselect = () => {
             <option value="YONDO">YONDO</option>
             <option value="ZARAGOZA">ZARAGOZA</option>
         </select>
-    </div>
+    </Fragment>
   )
 }
 

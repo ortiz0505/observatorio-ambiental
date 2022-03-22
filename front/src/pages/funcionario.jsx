@@ -30,14 +30,14 @@ const funcionario = () => {
                 <Link to='/funcionario/graficas'>
                   <div>
                       <button className="inputsppls">
-                        Graficas
+                        Gráficas
                       </button>
                   </div>
                 </Link>
                 <Link to='../solicitudreportero'>
                   <div>
                       <button className="inputsppls">
-                        Gestion de reporteros
+                        Gestión de reporteros
                       </button>
                   </div>
                 </Link>

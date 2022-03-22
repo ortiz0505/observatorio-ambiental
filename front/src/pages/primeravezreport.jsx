@@ -64,7 +64,9 @@ const primeravezreport = () => {
               </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
-              <CitiesAnt className="px-3" />
+              <div className="w-full px-3">
+                <CitiesAnt/>
+              </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full px-3">
